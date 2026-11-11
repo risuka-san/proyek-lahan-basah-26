@@ -46,4 +46,12 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    /**
+     * Get all learning progress records belonging to this user.
+     */
+    public function userProgress()
+    {
+        return $this->hasMany(UserProgress::class);
+    }
 }

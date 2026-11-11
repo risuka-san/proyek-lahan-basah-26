@@ -1,0 +1,175 @@
+
+/* =========================================
+   SIFARA - BOTANICAL NATURE EDITORIAL
+========================================= */
+
+:root {
+    --sifara-forest-dark: #183D2B;
+    --sifara-forest: #214E38;
+    --sifara-green: #2D6A4F;
+    --sifara-moss: #64866A;
+
+    --sifara-sage: #A8C6A0;
+    --sifara-mint: #D9EBDD;
+    --sifara-light: #EDF4EB;
+
+    --sifara-cream: #F6F3E9;
+    --sifara-white: #FFFFFF;
+    --sifara-gold: #EFC94C;
+    --sifara-coral: #E8876D;
+
+    --sifara-text: #263D30;
+    --sifara-muted: #718477;
+
+    --sifara-border: #E2E9DF;
+
+    --sifara-radius-sm: 10px;
+    --sifara-radius-md: 18px;
+    --sifara-radius-lg: 26px;
+
+    --sifara-shadow:
+        0 10px 30px rgba(33, 78, 56, .07);
+}
+
+/* RESET */
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    background: var(--sifara-cream);
+    color: var(--sifara-text);
+    font-family: 'Nunito', sans-serif;
+}
+
+/* GENERAL */
+
+.sifara-container {
+    width: min(100% - 60px, 1340px);
+    margin-inline: auto;
+}
+
+.sifara-section {
+    padding-block: 45px;
+}
+
+.sifara-section-title {
+    color: var(--sifara-forest);
+    font-size: 1.65rem;
+    font-weight: 800;
+    margin-bottom: 8px;
+}
+
+.sifara-section-description {
+    color: var(--sifara-muted);
+    line-height: 1.7;
+}
+
+/* BUTTON */
+
+.sifara-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    padding: 12px 22px;
+    border: 0;
+    border-radius: 12px;
+    background: var(--sifara-forest);
+    color: white;
+    font-weight: 800;
+    text-decoration: none;
+    cursor: pointer;
+    transition: .25s ease;
+}
+
+.sifara-btn:hover {
+    background: var(--sifara-green);
+    color: white;
+    transform: translateY(-2px);
+}
+
+.sifara-btn-gold {
+    background: var(--sifara-gold);
+    color: var(--sifara-forest-dark);
+}
+
+.sifara-btn-gold:hover {
+    background: #F5D76C;
+    color: var(--sifara-forest-dark);
+}
+
+/* BOTANICAL CARD */
+
+.sifara-card {
+    background: white;
+    border: 1px solid var(--sifara-border);
+    border-radius: var(--sifara-radius-md);
+    box-shadow: var(--sifara-shadow);
+    transition: .25s ease;
+}
+
+.sifara-card:hover {
+    transform: translateY(-4px);
+}
+
+/* LABEL */
+
+.sifara-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 8px 13px;
+    border-radius: 50px;
+    background: var(--sifara-mint);
+    color: var(--sifara-forest);
+    font-size: .78rem;
+    font-weight: 800;
+}
+
+/* IMAGE */
+
+.sifara-image {
+    width: 100%;
+    display: block;
+    object-fit: cover;
+    border-radius: var(--sifara-radius-md);
+}
+
+/* FOOTER */
+
+.sifara-footer {
+    margin-top: 65px;
+    padding: 35px 30px;
+    background: var(--sifara-forest-dark);
+    color: white;
+    text-align: center;
+}
+
+.sifara-footer p {
+    color: #D9EBDD;
+    margin: 7px 0;
+    font-size: .9rem;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 700px) {
+    .sifara-container {
+        width: calc(100% - 36px);
+    }
+
+    .sifara-section {
+        padding-block: 28px;
+    }
+
+    .sifara-section-title {
+        font-size: 1.35rem;
+    }
+}

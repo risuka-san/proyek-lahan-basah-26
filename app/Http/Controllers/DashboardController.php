@@ -2,76 +2,70 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Models\Level;
+use App\Models\UserProgress;
 use Illuminate\Support\Facades\Auth;
-use App\Models\UserProgress; // Tambahkan model ini
 
 class DashboardController extends Controller
 {
-    public function index()
+    /**
+     * Mengambil data level beserta status pembelajaran pengguna.
+     */
+    private function getLevels()
     {
         $userId = Auth::id();
 
-        // Ambil semua level yang sudah diselesaikan user ini
+        // Ambil ID level yang sudah diselesaikan pengguna.
         $completedLevels = UserProgress::where('user_id', $userId)
-                            ->where('is_completed', true)
-                            ->pluck('level_id')
-                            ->toArray();
+            ->where('is_completed', true)
+            ->pluck('level_id')
+            ->toArray();
 
-        // Daftar Level Master
-        $masterLevels = [
-                        ['id' => 1, 'kode' => 'KL', 'judul' => 'Konsep & Tipologi Lahan Basah', 'desc' => 'Kenali dasar dan ragamnya', 'bg' => '#F4C430', 'url' => '/materi/1'],
-            ['id' => 2, 'kode' => 'PS', 'judul' => 'Ekosistem Rawa Pasang Surut', 'desc' => 'Mengikuti irama air laut', 'bg' => '#85A98F', 'url' => '/materi/2'],
-            ['id' => 3, 'kode' => 'RL', 'judul' => 'Rawa Lebak', 'desc' => 'Tergenang saat musim hujan', 'bg' => '#B8D4B8', 'url' => '/materi/3'],
-            ['id' => 4, 'kode' => 'RG', 'judul' => 'Rawa Gambut', 'desc' => 'Penyimpan karbon raksasa', 'bg' => '#8B5A2B', 'url' => '/materi/4'],
-            ['id' => 5, 'kode' => 'MG', 'judul' => 'Lahan Mangrove', 'desc' => 'Pelindung alami pesisir', 'bg' => '#4A7C59', 'url' => '/materi/5'],
-        ];
+        // Ambil data level langsung dari database.
+        $levels = Level::orderBy('urutan')
+            ->get();
 
-        // Tentukan status setiap level
-        foreach ($masterLevels as $key => &$level) {
-            if (in_array($level['id'], $completedLevels)) {
-                $level['status'] = 'Selesai';
-            } elseif ($level['id'] == 1 || in_array($level['id'] - 1, $completedLevels)) {
-                // Jika level 1, ATAU level sebelumnya sudah selesai -> TERBUKA
-                $level['status'] = 'Terbuka';
+        // Tentukan status setiap level.
+        foreach ($levels as $index => $level) {
+            if (in_array($level->id, $completedLevels)) {
+                $level->status = 'Selesai';
+            } elseif (
+                $index === 0 ||
+                in_array($levels[$index - 1]->id, $completedLevels)
+            ) {
+                $level->status = 'Terbuka';
             } else {
-                $level['status'] = 'Terkunci';
+                $level->status = 'Terkunci';
             }
+
+            // URL menuju halaman materi.
+            $level->url = url('/materi/' . $level->id);
+
+            // Samakan nama atribut dengan yang mungkin digunakan Blade.
+            $level->desc = $level->deskripsi;
+            $level->bg = $level->warna;
         }
 
-        return view('dashboard', ['levels' => $masterLevels]);
+        return $levels;
     }
 
-        public function petaGame()
+    /**
+     * Menampilkan dashboard pengguna.
+     */
+    public function index()
     {
-        $userId = Auth::id();
+        $levels = $this->getLevels();
 
-        // Ambil level yang sudah selesai
-        $completedLevels = UserProgress::where('user_id', $userId)
-                            ->where('is_completed', true)
-                            ->pluck('level_id')
-                            ->toArray();
+        return view('dashboard', compact('levels'));
+    }
 
-        // Data Level dengan warna latar belakang (untuk ilustrasi CSS)
-        $levels = [
-            ['id' => 1, 'kode' => 'KL', 'judul' => 'Konsep & Tipologi Lahan Basah', 'desc' => 'Kenali dasar dan ragamnya', 'bg' => '#F4C430', 'url' => '/materi/1'],
-            ['id' => 2, 'kode' => 'PS', 'judul' => 'Ekosistem Rawa Pasang Surut', 'desc' => 'Mengikuti irama air laut', 'bg' => '#85A98F', 'url' => '/materi/2'],
-            ['id' => 3, 'kode' => 'RL', 'judul' => 'Rawa Lebak', 'desc' => 'Tergenang saat musim hujan', 'bg' => '#B8D4B8', 'url' => '/materi/3'],
-            ['id' => 4, 'kode' => 'RG', 'judul' => 'Rawa Gambut', 'desc' => 'Penyimpan karbon raksasa', 'bg' => '#8B5A2B', 'url' => '/materi/4'],
-            ['id' => 5, 'kode' => 'MG', 'judul' => 'Lahan Mangrove', 'desc' => 'Pelindung alami pesisir', 'bg' => '#4A7C59', 'url' => '/materi/5'],
-        ];
+    /**
+     * Menampilkan peta game pembelajaran.
+     */
+    public function petaGame()
+    {
+        $levels = $this->getLevels();
 
-        // Tentukan Status
-        foreach ($levels as &$level) {
-            if (in_array($level['id'], $completedLevels)) {
-                $level['status'] = 'Selesai';
-            } elseif ($level['id'] == 1 || in_array($level['id'] - 1, $completedLevels)) {
-                $level['status'] = 'Terbuka';
-            } else {
-                $level['status'] = 'Terkunci';
-            }
-        }
-
-        return view('peta-game', ['levels' => $levels]);
+        return view('peta-game', compact('levels'));
     }
 }
