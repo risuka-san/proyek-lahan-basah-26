@@ -2,79 +2,276 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="auth-wrapper" style="min-height: 70vh; padding: 30px 15px;">
-    <div class="auth-modal" style="max-width: 700px; width: 100%;">
 
-        <!-- Header -->
-        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap; gap: 10px;">
+<style>
+    .quiz-page {
+        min-height: calc(100vh - 75px);
+        padding: 42px 20px 65px;
+        background:
+            radial-gradient(circle at 8% 10%, rgba(184, 212, 184, .2), transparent 25%),
+            radial-gradient(circle at 92% 85%, rgba(201, 183, 139, .15), transparent 25%),
+            #F7F7F0;
+        font-family: 'Nunito', sans-serif;
+    }
 
-            <a href="{{ route('peta.game') }}"
-               style="text-decoration: none; color: #333; font-weight: bold;">
-                ← Kembali ke Peta
-            </a>
+    .quiz-container {
+        width: 100%;
+        max-width: 850px;
+        margin: 0 auto;
+    }
 
-            <span class="badge" style="background: var(--accent-yellow); color: #333;">
-                LEVEL {{ $level->urutan }} GAME
-            </span>
-        </div>
+    .quiz-back {
+        display: inline-flex;
+        color: #496B55;
+        font-size: 14px;
+        font-weight: 800;
+        text-decoration: none;
+        margin-bottom: 25px;
+        transition: .2s;
+    }
 
-        <!-- Judul Kuis -->
-        <div style="margin-bottom: 25px;">
-            <h2 style="font-size: 1.6rem; color: var(--primary-green); margin-bottom: 8px;">
-                Tantangan {{ $level->judul }}
-            </h2>
+    .quiz-back:hover {
+        color: #183D2B;
+        transform: translateX(-3px);
+    }
 
-            <p style="color: #666; margin: 0;">
-                Jawab semua pertanyaan untuk menyelesaikan level ini.
+    .quiz-header {
+        text-align: center;
+        margin-bottom: 28px;
+    }
+
+    .quiz-eyebrow {
+        display: inline-block;
+        padding: 8px 16px;
+        margin-bottom: 14px;
+        border-radius: 30px;
+        background: #E6EFE3;
+        border: 1px solid #DCE7D9;
+        color: #52765B;
+        font-size: 11px;
+        font-weight: 900;
+        letter-spacing: 1.5px;
+    }
+
+    .quiz-header h2 {
+        color: #284A35;
+        font-family: 'Playfair Display', serif;
+        font-size: clamp(27px, 4vw, 38px);
+        font-weight: 700;
+        margin: 0 0 10px;
+    }
+
+    .quiz-header p {
+        color: #788477;
+        font-size: 14px;
+        line-height: 1.7;
+        margin: 0;
+    }
+
+    .quiz-info {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-top: 20px;
+        padding: 14px 20px;
+        background: #FFFFFF;
+        border: 1px solid #E5EBDD;
+        border-radius: 13px;
+        color: #647568;
+        font-size: 13px;
+    }
+
+    .quiz-info strong {
+        color: #315C42;
+    }
+
+    .quiz-alert {
+        padding: 14px 17px;
+        margin-bottom: 18px;
+        background: #FEE2E2;
+        border: 1px solid #FECACA;
+        border-radius: 12px;
+        color: #991B1B;
+        font-size: 13px;
+    }
+
+    .quiz-question-card {
+        padding: 23px;
+        margin-bottom: 20px;
+        background: #FFFFFF;
+        border: 1px solid #E5EBDD;
+        border-radius: 18px;
+        box-shadow: 0 7px 24px rgba(43, 76, 52, .045);
+        transition: .2s ease;
+    }
+
+    .quiz-question-card:hover {
+        border-color: #C7D9C4;
+        box-shadow: 0 9px 26px rgba(43, 76, 52, .07);
+    }
+
+    .quiz-number {
+        display: inline-block;
+        padding: 6px 13px;
+        margin-bottom: 12px;
+        background: #E6EFE3;
+        color: #315C42;
+        border-radius: 30px;
+        font-size: 11px;
+        font-weight: 900;
+    }
+
+    .quiz-question-card h3 {
+        color: #344B3B;
+        font-size: 16px;
+        font-weight: 800;
+        line-height: 1.7;
+        margin: 0 0 18px;
+    }
+
+    .quiz-options {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .quiz-option {
+        display: flex;
+        align-items: flex-start;
+        gap: 12px;
+        padding: 14px 15px;
+        background: #FAFBF8;
+        border: 1.5px solid #E3E9DF;
+        border-radius: 12px;
+        cursor: pointer;
+        transition: .2s ease;
+    }
+
+    .quiz-option:hover {
+        background: #F0F5ED;
+        border-color: #91B194;
+    }
+
+    .quiz-option:has(input:checked) {
+        background: #EAF2E8;
+        border-color: #54805D;
+    }
+
+    .quiz-option input {
+        flex-shrink: 0;
+        accent-color: #2D6A4F;
+        transform: scale(1.2);
+        margin-top: 4px;
+    }
+
+    .quiz-option span {
+        color: #46584A;
+        font-size: 14px;
+        line-height: 1.6;
+    }
+
+    .quiz-submit {
+        display: block;
+        width: 100%;
+        padding: 15px 20px;
+        border: none;
+        border-radius: 13px;
+        background: #28583D;
+        color: #FFFFFF;
+        font-family: 'Nunito', sans-serif;
+        font-size: 14px;
+        font-weight: 900;
+        cursor: pointer;
+        box-shadow: 0 6px 16px rgba(45, 90, 63, .15);
+        transition: .25s ease;
+    }
+
+    .quiz-submit:hover {
+        background: #183D2B;
+        transform: translateY(-2px);
+    }
+
+    @media (max-width: 600px) {
+        .quiz-page {
+            padding: 25px 13px 45px;
+        }
+
+        .quiz-question-card {
+            padding: 18px;
+        }
+
+        .quiz-info {
+            gap: 8px;
+        }
+    }
+</style>
+
+<div class="quiz-page">
+    <div class="quiz-container">
+
+        <a href="{{ route('peta.game') }}" class="quiz-back">
+            ← Kembali ke Peta Petualangan
+        </a>
+
+        <header class="quiz-header">
+
+            <div class="quiz-eyebrow">
+                ✦ SIFARA LEARNING CHALLENGE
+            </div>
+
+            <h2>Tantangan {{ $level->judul }}</h2>
+
+            <p>
+                Jawab seluruh pertanyaan untuk menguji pemahamanmu
+                tentang ekosistem lahan basah.
             </p>
 
-            <div style="margin-top: 15px; padding: 12px; background: #F9F7ED; border-radius: 10px; color: #555;">
-                <strong>{{ $totalQuestions }} Soal</strong>
-                <span style="margin: 0 8px;">|</span>
-                Nilai minimum kelulusan:
-                <strong>{{ $passingScore }}</strong>
+            <div class="quiz-info">
+                <span>📝 <strong>{{ $totalQuestions }} Soal</strong></span>
+                <span>|</span>
+                <span>🎯 Nilai minimum kelulusan:
+                    <strong>{{ $passingScore }}</strong>
+                </span>
             </div>
-        </div>
 
-        <!-- Notifikasi Error -->
+        </header>
+
         @if(session('error'))
-            <div style="background: #FEE2E2; color: #991B1B; padding: 12px; border-radius: 10px; margin-bottom: 15px;">
+            <div class="quiz-alert">
                 {{ session('error') }}
             </div>
         @endif
 
-        <!-- Notifikasi Validasi -->
         @if($errors->any())
-            <div style="background: #FEE2E2; color: #991B1B; padding: 12px; border-radius: 10px; margin-bottom: 15px;">
+            <div class="quiz-alert">
                 {{ $errors->first() }}
             </div>
         @endif
 
-        <!-- Form Kuis -->
-        <form action="{{ route('kuis.submit', $level->id) }}" method="POST">
+        <form action="{{ route('kuis.submit', $level->id) }}"
+              method="POST">
+
             @csrf
 
             @foreach($questions as $index => $question)
 
-                <div style="margin-bottom: 25px; padding: 20px; border: 1px solid #E5E7EB; border-radius: 15px;">
+                <div class="quiz-question-card">
 
-                    <!-- Nomor dan Pertanyaan -->
-                    <div style="margin-bottom: 18px;">
-                        <span style="display: inline-block; background: var(--primary-green); color: white; padding: 5px 12px; border-radius: 20px; font-size: 0.85rem; margin-bottom: 10px;">
-                            Soal {{ $index + 1 }}
-                        </span>
+                    <span class="quiz-number">
+                        SOAL {{ $index + 1 }}
+                    </span>
 
-                        <h3 style="font-size: 1.1rem; color: #333; line-height: 1.6; margin: 0;">
-                            {{ $question->pertanyaan }}
-                        </h3>
-                    </div>
+                    <h3>
+                        {{ $question->pertanyaan }}
+                    </h3>
 
-                    <!-- Pilihan Jawaban -->
-                    <div style="display: flex; flex-direction: column; gap: 10px;">
+                    <div class="quiz-options">
 
                         @foreach($question->options->sortBy('opsi') as $option)
 
-                            <label style="display: flex; align-items: flex-start; gap: 12px; padding: 13px; border: 2px solid #E5E7EB; border-radius: 10px; cursor: pointer; transition: 0.2s;">
+                            <label class="quiz-option">
 
                                 <input
                                     type="radio"
@@ -82,10 +279,9 @@
                                     value="{{ $option->id }}"
                                     {{ old('jawaban.' . $question->id) == $option->id ? 'checked' : '' }}
                                     required
-                                    style="transform: scale(1.3); margin-top: 5px;"
                                 >
 
-                                <span style="font-size: 1rem; line-height: 1.5; color: #333;">
+                                <span>
                                     <strong>{{ $option->opsi }}.</strong>
                                     {{ $option->teks_jawaban }}
                                 </span>
@@ -95,12 +291,12 @@
                         @endforeach
 
                     </div>
+
                 </div>
 
             @endforeach
 
-            <!-- Tombol Kirim -->
-            <button type="submit" class="btn-submit" style="width: 100%;">
+            <button type="submit" class="quiz-submit">
                 Selesaikan Kuis 🚀
             </button>
 
@@ -108,4 +304,5 @@
 
     </div>
 </div>
+
 @endsection
