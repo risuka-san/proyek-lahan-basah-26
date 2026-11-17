@@ -16,6 +16,13 @@ class Material extends Model
         'sub_judul',
         'deskripsi_singkat',
         'konten',
+
+        // Informasi gambar materi
+        'gambar',
+        'gambar_caption',
+        'gambar_sumber',
+
+        // Fakta menarik
         'fakta_angka',
         'fakta_teks',
     ];

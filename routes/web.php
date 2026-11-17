@@ -12,6 +12,7 @@ Route::get('/', function () {
     return view('home');
 });
 
+
 // 2. Halaman yang membutuhkan login
 Route::middleware(['auth'])->group(function () {
 
@@ -19,25 +20,42 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])
         ->name('dashboard');
 
+
     // Halaman Materi
     Route::get('/materi/{level_id}/{material_id?}', [
         MaterialController::class,
         'show'
     ])->name('materi.show');
 
-    // Peta Game
+
+    // Halaman Peta Game (fitur lama tetap dipertahankan)
     Route::get('/peta-game', [DashboardController::class, 'petaGame'])
         ->name('peta.game');
+
+
+    // Halaman Latihan
+    // Sementara menggunakan halaman Peta Game yang sudah ada
+    Route::get('/latihan', [DashboardController::class, 'petaGame'])
+        ->name('latihan');
+
+
+    // Halaman Tentang
+    Route::get('/tentang', function () {
+        return view('tentang');
+    })->name('tentang');
+
 
     // Halaman Kuis
     Route::get('/kuis/{level_id}', [KuisController::class, 'show'])
         ->name('kuis.show');
 
+
     // Proses Jawaban Kuis
     Route::post('/kuis/{level_id}/submit', [KuisController::class, 'submit'])
         ->name('kuis.submit');
 
-    // Profile Laravel Breeze
+
+    // Profil Pengguna
     Route::get('/profile', [ProfileController::class, 'edit'])
         ->name('profile.edit');
 
@@ -47,11 +65,14 @@ Route::middleware(['auth'])->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])
         ->name('profile.destroy');
 
+
     // Game 2D
     Route::get('/kuis/{level_id}/game', function ($level_id) {
         return view('kuis.game', ['level_id' => $level_id]);
     })->name('kuis.game');
+
 });
+
 
 // 3. Route Autentikasi Laravel Breeze
 require __DIR__ . '/auth.php';

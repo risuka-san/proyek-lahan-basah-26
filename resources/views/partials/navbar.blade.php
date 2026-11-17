@@ -1,27 +1,21 @@
 
 <nav class="sifara-navbar">
-
     <div class="sifara-nav-inner">
 
         <!-- BRAND -->
         <a href="{{ Auth::check() ? route('dashboard') : url('/') }}"
            class="sifara-brand">
-
             <span class="sifara-brand-icon">🍃</span>
-
             <span class="sifara-brand-text">
                 <strong>SIFARA</strong>
                 <small>WETLAND LEARNING PLATFORM</small>
             </span>
-
         </a>
-
 
         <!-- NAVIGATION -->
         <div class="sifara-nav-links">
 
             @auth
-
                 <a href="{{ route('dashboard') }}">
                     Beranda
                 </a>
@@ -30,12 +24,14 @@
                     Materi
                 </a>
 
-                <a href="{{ route('peta.game') }}">
-                    Peta Game
+                <a href="{{ url('/latihan') }}">
+                    Latihan
                 </a>
 
+                <a href="{{ url('/tentang') }}">
+                    Tentang
+                </a>
             @else
-
                 <a href="{{ url('/') }}">
                     Beranda
                 </a>
@@ -43,33 +39,26 @@
                 <a href="{{ url('/#tentang') }}">
                     Tentang
                 </a>
-
             @endauth
 
         </div>
-
 
         <!-- USER ACTIONS -->
         <div class="sifara-nav-actions">
 
             @auth
-
                 <a href="{{ route('profile.edit') }}"
                    class="sifara-profile-link">
                     Profil
                 </a>
 
-                <form method="POST"
-                      action="{{ route('logout') }}">
+                <form method="POST" action="{{ route('logout') }}">
                     @csrf
-
                     <button type="submit" class="sifara-logout">
                         Keluar
                     </button>
                 </form>
-
             @else
-
                 <a href="{{ route('login') }}"
                    class="sifara-profile-link">
                     Masuk
@@ -79,15 +68,11 @@
                    class="sifara-logout">
                     Daftar
                 </a>
-
             @endauth
 
         </div>
-
     </div>
-
 </nav>
-
 
 <style>
 .sifara-navbar {
