@@ -845,7 +845,7 @@
             <div class="supervisor-card">
                 <div class="profile-image-wrapper">
                     @if(file_exists(public_path('images/dosen.webp')))
-                        <img src="{{ asset('images/dosen.webp') }}" alt="Foto Prof. Dr. Deasy Arisanty, M.Sc.">
+                        <img src="{{ asset('images/dosen.webp') }}" alt="Foto Prof. Dr. Deasy Arisanty, S.Si., M.Sc.">
                     @else
                         <div class="profile-placeholder">
                             <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -857,7 +857,7 @@
                     @endif
                 </div>
                 <span class="developer-number">DOSEN PENGAMPU</span>
-                <h3>Prof. Dr. Deasy Arisanty, M.Sc.</h3>
+                <h3>Prof. Dr. Deasy Arisanty, S.Si., M.Sc.</h3>
                 <p>Dosen Pengampu</p>
                 
                 <!-- Tautan Profil Dosen (Ganti # dengan link Google Scholar / SINTA) -->
