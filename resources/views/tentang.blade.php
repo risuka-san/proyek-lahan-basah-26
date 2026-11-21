@@ -289,6 +289,9 @@
         padding: 35px 30px;
         transition: .3s ease;
         position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
 
     .developer-card { width: 100%; max-width: 320px; }
@@ -305,12 +308,11 @@
         height: 120px;
         margin: 0 auto 20px;
         border-radius: 50%;
-        padding: 5px; /* Memberi jarak untuk border luar */
+        padding: 5px;
         background: linear-gradient(135deg, var(--green), var(--forest));
         position: relative;
     }
 
-    /* Supaya foto yang di-upload tidak keluar dari lingkaran */
     .profile-image-wrapper img {
         width: 100%;
         height: 100%;
@@ -320,7 +322,6 @@
         background-color: #FFF;
     }
 
-    /* Placeholder jika gambar belum dimasukkan */
     .profile-placeholder {
         width: 100%;
         height: 100%;
@@ -333,10 +334,7 @@
         color: #A5D6A7;
     }
     
-    .profile-placeholder svg {
-        width: 60px;
-        height: 60px;
-    }
+    .profile-placeholder svg { width: 60px; height: 60px; }
 
     .developer-number {
         color: #81977B;
@@ -349,7 +347,7 @@
     .developer-card h3, .supervisor-card h3 {
         color: var(--forest-dark);
         font-family: 'Baloo 2', 'Nunito', cursive;
-        margin: 12px 0 8px;
+        margin: 12px 0 5px;
         font-size: 1.4rem;
         font-weight: 800;
     }
@@ -359,6 +357,52 @@
         font-size: .95rem;
         font-weight: 600;
         margin: 0;
+    }
+
+    /* ============ NIM & SOSMED BARU ============ */
+    .dev-nim {
+        display: inline-block;
+        margin-top: 5px;
+        padding: 4px 12px;
+        background: #F0F9EC;
+        color: var(--forest);
+        font-size: .8rem;
+        font-weight: 800;
+        border-radius: 20px;
+        border: 1px solid #C8E6C9;
+    }
+
+    .dev-socials {
+        display: flex;
+        gap: 10px;
+        margin-top: 15px;
+    }
+
+    .dev-socials a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        background: #F8FCF5;
+        color: var(--muted);
+        border: 1px solid #E3F0DD;
+        transition: .3s ease;
+        text-decoration: none;
+    }
+
+    .dev-socials a:hover {
+        background: var(--forest);
+        color: white;
+        transform: translateY(-3px);
+        border-color: var(--forest);
+    }
+
+    .dev-socials svg {
+        width: 18px;
+        height: 18px;
+        fill: currentColor;
     }
 
     /* Dosen Card */
@@ -383,6 +427,34 @@
     .supervisor-card .profile-placeholder {
         background: #FFF9E0;
         color: #FFCA28;
+    }
+
+    .supervisor-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        margin-top: 15px;
+        padding: 8px 16px;
+        background: #FFFFFF;
+        border: 1px solid #FFE082;
+        border-radius: 20px;
+        color: #8F7A1F;
+        font-size: .85rem;
+        font-weight: 800;
+        text-decoration: none;
+        transition: .3s ease;
+    }
+
+    .supervisor-link:hover {
+        background: #FFF9E0;
+        border-color: #FFCA28;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 10px rgba(255, 213, 79, .2);
+    }
+
+    .supervisor-link svg {
+        width: 16px;
+        height: 16px;
     }
 
     /* ============ REFERENCES ============ */
@@ -627,11 +699,10 @@
                 <div>
                     <h3>Belajar Mengenal Lahan Basah</h3>
                     <p>
-                        SIFARA dikembangkan sebagai media pembelajaran interaktif berbasis website yang ditujukan untuk siswa SMP kelas VII. Platform ini menyajikan pembelajaran mengenai ekosistem lahan basah, mulai dari konsep dan tipologi lahan basah, ekosistem rawa pasang surut, rawa lebak, rawa gambut, hingga lahan mangrove.
+                        SIFARA adalah media pembelajaran Geografi interaktif berbasis website untuk siswa SMA kelas XI yang berfokus pada ekosistem lahan basah di Indonesia. Materi di dalamnya disusun selaras dengan pembahasan Biosfer mengenai persebaran flora dan fauna pada hutan bakau dan hutan rawa gambut, serta Pengelolaan Sumber Daya Alam, yang mengulas pemanfaatan rawa pasang surut dan rawa lebak sebagai lahan pertanian.
                     </p>
                     <p>
-                        Melalui penyajian materi, permainan edukatif, dan kuis interaktif, siswa dapat mempelajari karakteristik setiap ekosistem serta mengenali keanekaragaman hayati yang terdapat di dalamnya. SIFARA diharapkan dapat memberikan pengalaman belajar yang lebih menarik, mudah dipahami, dan mendorong kepedulian terhadap kelestarian lingkungan lahan basah.
-                    </p>
+                        Dilengkapi dengan materi interaktif, permainan edukatif, dan kuis, SIFARA membantu siswa memahami karakteristik tiap ekosistem beserta keanekaragaman hayatinya dengan cara yang seru, mudah dipahami, sekaligus mendorong kepedulian terhadap kelestarian lingkungan.
                 </div>
             </div>
         </div>
@@ -657,8 +728,8 @@
                             <path d="M8 7H16M8 11H13" stroke="#2E7D4F" stroke-width="1.5" stroke-linecap="round"/>
                         </svg>
                     </div>
-                    <h3>Memahami Konsep</h3>
-                    <p>Mengenal pengertian, karakteristik, dan tipologi ekosistem lahan basah.</p>
+                    <h3>Memahami Konsep Lahan Basah</h3>
+                    <p>Mengenal pengertian, karakteristik fisik, serta klasifikasi (tipologi) ekosistem lahan basah yang ada di Indonesia.</p>
                 </div>
 
                 <div class="objective-card">
@@ -670,8 +741,8 @@
                             <path d="M12 16C12 16 16 15 17 11C17 11 13 10 11 13C10.5 13.8 11 15 12 16Z" fill="#C8E6C9" stroke="#2E7D4F" stroke-width="1.5" stroke-linejoin="round"/>
                         </svg>
                     </div>
-                    <h3>Mengenali Ekosistem</h3>
-                    <p>Memahami berbagai jenis ekosistem lahan basah, seperti rawa dan mangrove.</p>
+                    <h3>Menganalisis Persebaran Biosfer</h3>
+                    <p>Mengidentifikasi persebaran flora dan fauna khas beserta bentuk adaptasinya pada ekosistem hutan bakau (mangrove) dan hutan rawa gambut di Indonesia.</p>
                 </div>
 
                 <div class="objective-card">
@@ -683,8 +754,8 @@
                             <circle cx="15" cy="9" r="1.5" fill="#FFD54F"/>
                         </svg>
                     </div>
-                    <h3>Keanekaragaman Hayati</h3>
-                    <p>Mengidentifikasi flora dan fauna yang hidup serta beradaptasi di lahan basah.</p>
+                    <h3>Mengkaji Pengelolaan Sumber Daya Alam</h3>
+                    <p>Memahami bentuk pemanfaatan lahan basah secara berkelanjutan di sektor pertanian, khususnya pengelolaan sawah pasang surut dan sawah lebak.</p>
                 </div>
 
                 <div class="objective-card">
@@ -695,8 +766,8 @@
                             <path d="M8 12L11 15L16 9" stroke="#2E7D4F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                         </svg>
                     </div>
-                    <h3>Menumbuhkan Kepedulian</h3>
-                    <p>Meningkatkan kesadaran mengenai pentingnya menjaga ekosistem lahan basah.</p>
+                    <h3>Menumbuhkan Kepedulian Lingkungan</h3>
+                    <p>Meningkatkan kesadaran siswa akan pentingnya menjaga keseimbangan dan kelestarian ekosistem lahan basah dari ancaman kerusakan lingkungan.</p>
                 </div>
             </div>
         </div>
@@ -717,10 +788,6 @@
                 <!-- DEVELOPER 1 -->
                 <div class="developer-card">
                     <div class="profile-image-wrapper">
-                        <!-- 
-                          GANTI 'rizqa.jpg' DENGAN NAMA FILE FOTO KAMU. 
-                          Pastikan file fotonya diletakkan di folder public/images/ 
-                        -->
                         @if(file_exists(public_path('images/rizqa.jpg')))
                             <img src="{{ asset('images/rizqa.jpg') }}" alt="Foto Rizqa Aulia Faiha">
                         @else
@@ -735,17 +802,21 @@
                     <span class="developer-number">DEVELOPER 01</span>
                     <h3>Rizqa Aulia Faiha</h3>
                     <p>Program Studi Pendidikan Komputer</p>
+                    <span class="dev-nim">NIM. 2410131220008</span> <!-- GANTI NIM -->
+                    
+                    <!-- Sosmed (Ganti # dengan link IG/LinkedIn) -->
+                    <div class="dev-socials">
+                        <a href="https://www.instagram.com/ra.faiha411_/" target="_blank" title="Instagram Rizqa">
+                            <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+                        </a>
+                    </div>
                 </div>
 
                 <!-- DEVELOPER 2 -->
                 <div class="developer-card">
                     <div class="profile-image-wrapper">
-                        <!-- 
-                          GANTI 'siti.jpg' DENGAN NAMA FILE FOTO KAMU. 
-                          Pastikan file fotonya diletakkan di folder public/images/ 
-                        -->
-                        @if(file_exists(public_path('images/siti.jpg')))
-                            <img src="{{ asset('images/siti.jpg') }}" alt="Foto Siti Noor Hayati">
+                        @if(file_exists(public_path('images/siti.jpeg')))
+                            <img src="{{ asset('images/siti.jpeg') }}" alt="Foto Siti Noor Hayati">
                         @else
                             <div class="profile-placeholder">
                                 <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -758,6 +829,14 @@
                     <span class="developer-number">DEVELOPER 02</span>
                     <h3>Siti Noor Hayati</h3>
                     <p>Program Studi Pendidikan Komputer</p>
+                    <span class="dev-nim">NIM. 2410131120012</span> <!-- GANTI NIM -->
+                    
+                    <!-- Sosmed (Ganti # dengan link IG/LinkedIn) -->
+                    <div class="dev-socials">
+                        <a href="https://www.instagram.com/_sinohaa/" target="_blank" title="Instagram Siti">
+                            <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+                        </a>
+                    </div>
                 </div>
 
             </div>
@@ -765,10 +844,6 @@
             <!-- DOSEN PENGAMPU -->
             <div class="supervisor-card">
                 <div class="profile-image-wrapper">
-                    <!-- 
-                      GANTI 'dosen.jpg' DENGAN NAMA FILE FOTO DOSEN. 
-                      Pastikan file fotonya diletakkan di folder public/images/ 
-                    -->
                     @if(file_exists(public_path('images/dosen.webp')))
                         <img src="{{ asset('images/dosen.webp') }}" alt="Foto Prof. Dr. Deasy Arisanty, M.Sc.">
                     @else
@@ -784,6 +859,15 @@
                 <span class="developer-number">DOSEN PENGAMPU</span>
                 <h3>Prof. Dr. Deasy Arisanty, M.Sc.</h3>
                 <p>Dosen Pengampu</p>
+                
+                <!-- Tautan Profil Dosen (Ganti # dengan link Google Scholar / SINTA) -->
+                <a href="https://pendgeografi.ulm.ac.id/profil/dosen/deasy-arisanty" target="_blank" class="supervisor-link">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M21 10C21 17 12 23 12 23C12 23 3 17 3 10C3 5.58172 6.58172 2 11 2H13C17.4183 2 21 5.58172 21 10Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <circle cx="12" cy="10" r="3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    Profil Lengkap
+                </a>
             </div>
         </div>
     </section>
