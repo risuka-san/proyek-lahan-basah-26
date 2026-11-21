@@ -153,11 +153,14 @@
         transform: translateX(4px);
     }
 
+    /* =========================================
+       GAMBAR KARAKTER (DISAMAKAN DENGAN BERANDA)
+    ========================================= */
     .hero-decoration {
         position: relative;
         z-index: 1;
-        width: 290px;
-        height: 220px;
+        width: 320px; /* Lebar wadah diperbesar */
+        height: 320px; /* Tinggi wadah diperbesar */
         flex-shrink: 0;
         display: flex;
         align-items: center;
@@ -171,20 +174,28 @@
     }
 
     .leaf-circle {
-        width: 190px;
-        height: 190px;
+        width: 320px;
+        height: 320px;
         display: flex;
         align-items: center;
         justify-content: center;
         border-radius: 50%;
         background: rgba(255,255,255,.1);
         border: 3px dashed rgba(255,255,255,.3);
-        transform: rotate(-10deg);
+        transform: rotate(0deg); /* Rotasi dihilangkan agar gambar tegak */
     }
 
     .leaf-circle svg {
         width: 100px;
         height: 100px;
+    }
+
+    /* Gambar Karakter Tanpa Border */
+    .leaf-circle img {
+        width: 115%; /* Zoom agar lebih besar */
+        height: 115%;
+        object-fit: contain; /* Gambar utuh */
+        filter: drop-shadow(0 15px 15px rgba(33, 78, 56, .4)); /* Bayangan tetap ada */
     }
 
     /* =========================================
@@ -459,16 +470,16 @@
     @media (max-width: 1050px) {
         .sifara-dashboard { padding-left: 30px; padding-right: 30px; }
         .sifara-level-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-        .hero-decoration { width: 220px; }
-        .leaf-circle { width: 160px; height: 160px; }
+        .hero-decoration { width: 260px; height: 260px; }
+        .leaf-circle { width: 260px; height: 260px; }
     }
 
     @media (max-width: 700px) {
         .sifara-dashboard { padding: 22px 18px 45px; }
         .sifara-hero { flex-direction: column; align-items: flex-start; padding: 30px 25px; gap: 15px; text-align: center; }
         .hero-content { display: flex; flex-direction: column; align-items: center; }
-        .hero-decoration { align-self: center; height: 150px; }
-        .leaf-circle { width: 130px; height: 130px; }
+        .hero-decoration { align-self: center; height: 200px; width: 200px; }
+        .leaf-circle { width: 200px; height: 200px; }
         .leaf-circle svg { width: 70px; height: 70px; }
         
         .sifara-stats { grid-template-columns: 1fr; gap: 15px; margin: 25px 0 35px; }
@@ -515,12 +526,16 @@
 
         <div class="hero-decoration">
             <div class="leaf-circle">
-                <!-- Ilustrasi Daun Besar -->
-                <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M8 56C8 56 12 18 56 8C56 8 60 52 20 56C12 57.5 8 56 8 56Z" fill="#A5D6A7" stroke="#E8F8EE" stroke-width="2" stroke-linejoin="round"/>
-                    <path d="M8 56L32 32" stroke="#1B5E3A" stroke-width="2" stroke-linecap="round"/>
-                    <path d="M20 44L28 40M14 50L22 46M26 36L34 32M32 30L40 26M38 24L46 20" stroke="#1B5E3A" stroke-width="1.4" stroke-linecap="round" opacity="0.6"/>
-                </svg>
+                <!-- Memanggil gambar chara.png, jika belum ada pakai SVG daun -->
+                @if(file_exists(public_path('images/chara.png')))
+                    <img src="{{ asset('images/chara.png') }}" alt="Karakter SIFARA">
+                @else
+                    <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M8 56C8 56 12 18 56 8C56 8 60 52 20 56C12 57.5 8 56 8 56Z" fill="#A5D6A7" stroke="#E8F8EE" stroke-width="2" stroke-linejoin="round"/>
+                        <path d="M8 56L32 32" stroke="#1B5E3A" stroke-width="2" stroke-linecap="round"/>
+                        <path d="M20 44L28 40M14 50L22 46M26 36L34 32M32 30L40 26M38 24L46 20" stroke="#1B5E3A" stroke-width="1.4" stroke-linecap="round" opacity="0.6"/>
+                    </svg>
+                @endif
             </div>
         </div>
     </section>

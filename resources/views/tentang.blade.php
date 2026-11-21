@@ -91,14 +91,32 @@
         font-weight: 600;
     }
 
+    /* Container untuk Logo di Hero */
     .about-hero-decoration {
         position: absolute;
-        right: 10%;
-        top: 25%;
-        width: 250px;
-        height: 250px;
-        opacity: .15;
+        right: 8%;
+        top: 20%;
+        width: 320px; /* Ukuran diperbesar */
+        height: 320px;
         pointer-events: none;
+        z-index: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        animation: float-bob 5s ease-in-out infinite;
+    }
+
+    @keyframes float-bob {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-15px); }
+    }
+
+    /* Style gambar logo */
+    .about-hero-decoration img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        filter: drop-shadow(0 20px 30px rgba(46, 125, 79, 0.2));
     }
 
     .about-button {
@@ -359,7 +377,7 @@
         margin: 0;
     }
 
-    /* ============ NIM & SOSMED BARU ============ */
+    /* ============ NIM & SOSMED ============ */
     .dev-nim {
         display: inline-block;
         margin-top: 5px;
@@ -611,6 +629,7 @@
     /* ============ RESPONSIVE ============ */
     @media(max-width: 1024px) {
         .objective-grid { grid-template-columns: repeat(2, 1fr); }
+        .about-hero-decoration { width: 250px; height: 250px; right: 5%; }
     }
 
     @media(max-width: 850px) {
@@ -668,12 +687,9 @@
             </div>
         </div>
         
-        <!-- Dekorasi SVG Melayang -->
+        <!-- Logo (Menggantikan Dekorasi Daun) -->
         <div class="about-hero-decoration">
-            <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M20 180C20 180 40 80 180 20C180 20 200 160 80 180C40 186 20 180 20 180Z" fill="#2E7D4F"/>
-                <path d="M20 180L90 110" stroke="#1B5E3A" stroke-width="4" stroke-linecap="round"/>
-            </svg>
+            <img src="{{ asset('images/logo.jpg') }}" alt="Logo SIFARA">
         </div>
     </section>
 
@@ -703,6 +719,7 @@
                     </p>
                     <p>
                         Dilengkapi dengan materi interaktif, permainan edukatif, dan kuis, SIFARA membantu siswa memahami karakteristik tiap ekosistem beserta keanekaragaman hayatinya dengan cara yang seru, mudah dipahami, sekaligus mendorong kepedulian terhadap kelestarian lingkungan.
+                    </p>
                 </div>
             </div>
         </div>
@@ -802,9 +819,8 @@
                     <span class="developer-number">DEVELOPER 01</span>
                     <h3>Rizqa Aulia Faiha</h3>
                     <p>Program Studi Pendidikan Komputer</p>
-                    <span class="dev-nim">NIM. 2410131220008</span> <!-- GANTI NIM -->
+                    <span class="dev-nim">NIM. 2410131220008</span>
                     
-                    <!-- Sosmed (Ganti # dengan link IG/LinkedIn) -->
                     <div class="dev-socials">
                         <a href="https://www.instagram.com/ra.faiha411_/" target="_blank" title="Instagram Rizqa">
                             <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
@@ -829,9 +845,8 @@
                     <span class="developer-number">DEVELOPER 02</span>
                     <h3>Siti Noor Hayati</h3>
                     <p>Program Studi Pendidikan Komputer</p>
-                    <span class="dev-nim">NIM. 2410131120012</span> <!-- GANTI NIM -->
+                    <span class="dev-nim">NIM. 2410131120012</span>
                     
-                    <!-- Sosmed (Ganti # dengan link IG/LinkedIn) -->
                     <div class="dev-socials">
                         <a href="https://www.instagram.com/_sinohaa/" target="_blank" title="Instagram Siti">
                             <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
@@ -860,7 +875,7 @@
                 <h3>Prof. Dr. Deasy Arisanty, S.Si., M.Sc.</h3>
                 <p>Dosen Pengampu</p>
                 
-                <!-- Tautan Profil Dosen (Ganti # dengan link Google Scholar / SINTA) -->
+                <!-- Tautan Profil Dosen -->
                 <a href="https://pendgeografi.ulm.ac.id/profil/dosen/deasy-arisanty" target="_blank" class="supervisor-link">
                     <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M21 10C21 17 12 23 12 23C12 23 3 17 3 10C3 5.58172 6.58172 2 11 2H13C17.4183 2 21 5.58172 21 10Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
