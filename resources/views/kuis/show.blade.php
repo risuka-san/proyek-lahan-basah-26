@@ -1,5 +1,6 @@
-
 @extends('layouts.app')
+
+@section('title', 'Kuis Geografi - SIFARA')
 
 @section('content')
 
@@ -121,6 +122,7 @@
         border-radius: 30px;
         font-size: 11px;
         font-weight: 900;
+        letter-spacing: .4px;
     }
 
     .quiz-question-card h3 {
@@ -193,6 +195,13 @@
         transform: translateY(-2px);
     }
 
+    .quiz-submit:focus-visible,
+    .quiz-back:focus-visible,
+    .quiz-option:focus-within {
+        outline: 3px solid rgba(84, 128, 93, .35);
+        outline-offset: 3px;
+    }
+
     @media (max-width: 600px) {
         .quiz-page {
             padding: 25px 13px 45px;
@@ -218,20 +227,20 @@
         <header class="quiz-header">
 
             <div class="quiz-eyebrow">
-                ✦ SIFARA LEARNING CHALLENGE
+                SIFARA · TANTANGAN GEOGRAFI
             </div>
 
             <h2>Tantangan {{ $level->judul }}</h2>
 
             <p>
                 Jawab seluruh pertanyaan untuk menguji pemahamanmu
-                tentang ekosistem lahan basah.
+                tentang materi Geografi kelas XI.
             </p>
 
             <div class="quiz-info">
-                <span>📝 <strong>{{ $totalQuestions }} Soal</strong></span>
-                <span>|</span>
-                <span>🎯 Nilai minimum kelulusan:
+                <span><strong>{{ $totalQuestions }} Soal</strong></span>
+                <span aria-hidden="true">|</span>
+                <span>Nilai minimum kelulusan:
                     <strong>{{ $passingScore }}</strong>
                 </span>
             </div>
@@ -239,13 +248,13 @@
         </header>
 
         @if(session('error'))
-            <div class="quiz-alert">
+            <div class="quiz-alert" role="alert">
                 {{ session('error') }}
             </div>
         @endif
 
         @if($errors->any())
-            <div class="quiz-alert">
+            <div class="quiz-alert" role="alert">
                 {{ $errors->first() }}
             </div>
         @endif
@@ -297,7 +306,7 @@
             @endforeach
 
             <button type="submit" class="quiz-submit">
-                Selesaikan Kuis 🚀
+                Selesaikan Kuis
             </button>
 
         </form>

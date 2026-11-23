@@ -352,12 +352,12 @@
         border-color: var(--card-accent);
     }
 
-    /* Tema Warna Tiap Ekosistem */
-    .sifara-level-card.kl { --card-bg: #FBF9E9; --card-bottom: #F2F0D4; --card-accent: #D4AF37; --card-border: #E9E2B7; --card-decoration: #E8E9B9; }
-    .sifara-level-card.ps { --card-bg: #EAF5EB; --card-bottom: #D5EADB; --card-accent: #4CAF7A; --card-border: #C7E1CC; --card-decoration: #BFDCC5; }
-    .sifara-level-card.rl { --card-bg: #E8F3E9; --card-bottom: #D5E8D5; --card-accent: #83AE8B; --card-border: #C9DEC9; --card-decoration: #BCDABF; }
-    .sifara-level-card.rg { --card-bg: #F2EBDD; --card-bottom: #E8DCC8; --card-accent: #A77B52; --card-border: #E1D0B7; --card-decoration: #DCC9AA; }
-    .sifara-level-card.mg { --card-bg: #E1F0E4; --card-bottom: #CDE5D3; --card-accent: #2E7D4F; --card-border: #C2DDC8; --card-decoration: #B5D9BE; }
+    /* Tema Warna Tiap Level Geografi */
+    .sifara-level-card.bio { --card-bg: #E8F3E9; --card-bottom: #D5E8D5; --card-accent: #6F9675; --card-border: #C9DEC9; --card-decoration: #BCDABF; }
+    .sifara-level-card.bmd { --card-bg: #EAF5EB; --card-bottom: #D5EADB; --card-accent: #4CAF7A; --card-border: #C7E1CC; --card-decoration: #BFDCC5; }
+    .sifara-level-card.ffi { --card-bg: #F5F0E3; --card-bottom: #EDE3C9; --card-accent: #B8A879; --card-border: #E4D9B9; --card-decoration: #DDD1AA; }
+    .sifara-level-card.sda { --card-bg: #F0F2E7; --card-bottom: #E0E7D2; --card-accent: #8B9B72; --card-border: #D3DEC3; --card-decoration: #CAD8B8; }
+    .sifara-level-card.pl { --card-bg: #E1F0E4; --card-bottom: #CDE5D3; --card-accent: #2E7D4F; --card-border: #C2DDC8; --card-decoration: #B5D9BE; }
 
     /* Top Card */
     .level-card-top {
@@ -507,13 +507,13 @@
             <h1>
                 Halo, {{ Auth::user()->name }}!
                 <br>
-                Mari <span>jelajahi alam.</span>
+                Mari <span>jelajahi Geografi.</span>
             </h1>
 
             <p>
-                Temukan keunikan ekosistem lahan basah,
-                pelajari perannya bagi lingkungan, dan
-                jadilah bagian dari upaya pelestariannya.
+                Kenali biosfer, bioma, persebaran flora dan fauna,
+                serta potensi sumber daya alam Indonesia.
+                Pelajari juga cara menjaga lingkungan secara berkelanjutan.
             </p>
 
             <a href="{{ url('/peta-game') }}" class="hero-button">
@@ -597,8 +597,8 @@
     <section class="level-section">
         <div class="section-heading">
             <div>
-                <h2>Jelajahi Ekosistem</h2>
-                <p>Kenali lima ekosistem lahan basah melalui perjalanan belajar.</p>
+                <h2>Jelajahi Materi Geografi</h2>
+                <p>Pelajari lima kelompok materi Geografi kelas XI melalui perjalanan belajar.</p>
             </div>
             <a href="{{ url('/peta-game') }}" class="section-link">
                 Lihat Peta
@@ -647,19 +647,45 @@
 
                     <div class="level-card-content">
                         <h3>
-                            <!-- IKON EKOSISTEM (Menggunakan SVG) -->
-                            @if($level->kode == 'KL')
-                                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 22V8M12 8C12 8 8 7 7 3C7 3 11 2 13 5C13.5 5.8 13 7 12 8Z" fill="#81C784" stroke="#4CAF7A" stroke-width="1.5" stroke-linejoin="round"/><path d="M12 13C12 13 16 12 17 8C17 8 13 7 11 10C10.5 10.8 11 12 12 13Z" fill="#81C784" stroke="#4CAF7A" stroke-width="1.5" stroke-linejoin="round"/></svg>
-                            @elseif($level->kode == 'PS')
-                                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2 12H22M2 17H22M2 7H22" stroke="#0288D1" stroke-width="2" stroke-linecap="round"/></svg>
-                            @elseif($level->kode == 'RL')
-                                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 7C12 7 13.5 4 16 4C18.5 4 20 6.5 20 9C20 14 12 20 12 20C12 20 4 14 4 9C4 6.5 5.5 4 8 4C10.5 4 12 7 12 7Z" fill="#B39DDB" stroke="#7E57C2" stroke-width="1.5" stroke-linejoin="round"/></svg>
-                            @elseif($level->kode == 'RG')
-                                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 21V11M12 11C12 11 8 10 7 6C7 6 11 5 13 8C13.5 8.8 13 10 12 11Z" fill="#A1887F" stroke="#795548" stroke-width="1.5" stroke-linejoin="round"/><path d="M12 15C12 15 16 14 17 10C17 10 13 9 11 12C10.5 12.8 11 14 12 15Z" fill="#A1887F" stroke="#795548" stroke-width="1.5" stroke-linejoin="round"/></svg>
-                            @elseif($level->kode == 'MG')
-                                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 22V12M12 12C12 12 8 13 6 10C6 10 9 7 12 12Z" fill="#66BB6A" stroke="#388E3C" stroke-width="1.5" stroke-linejoin="round"/><path d="M12 16C12 16 16 17 18 14C18 14 15 11 12 16Z" fill="#66BB6A" stroke="#388E3C" stroke-width="1.5" stroke-linejoin="round"/></svg>
-                            @else
-                                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 19C5 19 7 9 19 5C19 5 21 17 11 19C8 19.6 5 19 5 19Z" fill="#81C784" stroke="#4CAF7A" stroke-width="1.5" stroke-linejoin="round"/></svg>
+                            <!-- ILUSTRASI FLAT 2D TIAP LEVEL -->
+                            @if($level->kode == 'BIO')
+                                <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <circle cx="20" cy="20" r="16" fill="#B8DDBB"/>
+                                    <path d="M7 17L14 12L19 15L17 21L10 24L7 17Z" fill="#4F9665"/>
+                                    <path d="M22 8L29 12L33 20L27 24L23 19L22 8Z" fill="#4F9665"/>
+                                    <path d="M15 26L21 23L27 27L25 33L17 32L15 26Z" fill="#4F9665"/>
+                                    <path d="M20 4V36M4 20H36" stroke="#2E7D4F" stroke-width="1.2" opacity=".4"/>
+                                </svg>
+                            @elseif($level->kode == 'BMD')
+                                <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M20 5L9 22H15L10 29H30L25 22H31L20 5Z" fill="#4F9665"/>
+                                    <path d="M20 25V35" stroke="#8B6345" stroke-width="3" stroke-linecap="round"/>
+                                    <path d="M7 34H33" stroke="#8B6345" stroke-width="2" stroke-linecap="round"/>
+                                    <circle cx="31" cy="9" r="4" fill="#FFD66B"/>
+                                </svg>
+                            @elseif($level->kode == 'FFI')
+                                <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M20 34V15" stroke="#548B58" stroke-width="2.5" stroke-linecap="round"/>
+                                    <path d="M20 23C11 23 8 16 9 11C16 10 21 15 20 23Z" fill="#83B77F"/>
+                                    <path d="M20 18C20 10 26 6 32 7C33 14 28 20 20 18Z" fill="#4F9665"/>
+                                    <path d="M20 34C15 30 12 29 9 30" stroke="#548B58" stroke-width="2" stroke-linecap="round"/>
+                                    <circle cx="29" cy="28" r="5" fill="#E6B66C"/>
+                                    <path d="M26 26L24 22L30 24L34 22L32 28" fill="#B77D45"/>
+                                </svg>
+                            @elseif($level->kode == 'SDA')
+                                <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M4 29L14 13L21 23L27 15L37 29H4Z" fill="#8BAF8B"/>
+                                    <path d="M14 13L18 19L14 18L11 20L14 13Z" fill="#F5F0E3"/>
+                                    <path d="M4 32H36" stroke="#8B9B72" stroke-width="2" stroke-linecap="round"/>
+                                    <path d="M12 34V29M20 34V29M28 34V29" stroke="#8B9B72" stroke-width="1.5"/>
+                                </svg>
+                            @elseif($level->kode == 'PL')
+                                <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M20 35V17" stroke="#548B58" stroke-width="2.5" stroke-linecap="round"/>
+                                    <path d="M20 23C10 24 6 17 8 10C16 9 21 15 20 23Z" fill="#83B77F"/>
+                                    <path d="M20 18C20 9 27 5 34 8C34 16 28 21 20 18Z" fill="#4F9665"/>
+                                    <path d="M12 31L16 35L29 22" stroke="#2E7D4F" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
                             @endif
                             {{ $level->judul }}
                         </h3>

@@ -1,5 +1,6 @@
-
 @extends('layouts.app')
+
+@section('title', 'Profil Pengguna - SIFARA')
 
 @section('content')
 
@@ -84,8 +85,6 @@
         margin-bottom: 5px;
     }
 
-    /* PROGRESS CARD */
-
     .profile-progress {
         position: relative;
         overflow: hidden;
@@ -127,6 +126,7 @@
         color: #D9EBDD;
         font-size: 13px;
         margin: 0 0 17px;
+        line-height: 1.7;
     }
 
     .progress-track {
@@ -162,10 +162,13 @@
         background: rgba(255,255,255,.1);
         border: 1px solid rgba(255,255,255,.15);
         border-radius: 25px;
-        font-size: 55px;
     }
 
-    /* FORM CARDS */
+    .progress-icon svg {
+        width: 72px;
+        height: 72px;
+        display: block;
+    }
 
     .profile-form-card {
         padding: 30px;
@@ -277,11 +280,16 @@
     .password-icon {
         width: 43px;
         height: 43px;
+        flex-shrink: 0;
         display: grid;
         place-items: center;
         background: #EAF2E8;
         border-radius: 12px;
-        font-size: 20px;
+    }
+
+    .password-icon svg {
+        width: 25px;
+        height: 25px;
     }
 
     @media (max-width: 600px) {
@@ -311,8 +319,12 @@
         .progress-icon {
             width: 65px;
             height: 65px;
-            font-size: 34px;
             border-radius: 17px;
+        }
+
+        .progress-icon svg {
+            width: 48px;
+            height: 48px;
         }
 
         .profile-form-card {
@@ -347,7 +359,7 @@
 
             <div>
                 <div class="profile-eyebrow">
-                    SIFARA LEARNING MEMBER
+                    ANGGOTA PEMBELAJARAN SIFARA
                 </div>
 
                 <h1>{{ $user->name }}</h1>
@@ -378,8 +390,8 @@
                 </h2>
 
                 <p>
-                    Terus lanjutkan petualanganmu menjelajahi ekosistem
-                    lahan basah bersama SIFARA.
+                    Terus lanjutkan petualanganmu mempelajari Geografi
+                    kelas XI bersama SIFARA.
                 </p>
 
                 <div class="progress-track">
@@ -394,8 +406,17 @@
 
             </div>
 
-            <div class="progress-icon">
-                🏆
+            <div class="progress-icon" aria-hidden="true">
+                <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M31 13H69V31C69 45 61 54 50 54C39 54 31 45 31 31V13Z" fill="#EFC94C"/>
+                    <path d="M31 20H18V28C18 39 25 45 36 45" stroke="#D6AD43" stroke-width="7" stroke-linecap="round"/>
+                    <path d="M69 20H82V28C82 39 75 45 64 45" stroke="#D6AD43" stroke-width="7" stroke-linecap="round"/>
+                    <path d="M43 54V68H57V54" stroke="#D6AD43" stroke-width="6" stroke-linejoin="round"/>
+                    <path d="M35 68H65V77H35V68Z" fill="#D6AD43"/>
+                    <path d="M25 77H75V87H25V77Z" fill="#B98A43"/>
+                    <path d="M50 19L53.5 27L62 28L55.5 34L57 43L50 38.5L43 43L44.5 34L38 28L46.5 27L50 19Z" fill="#FFF4C9"/>
+                    <path d="M20 12L23 17M79 11L76 17M15 57L20 60M85 57L80 60" stroke="#A8C6A0" stroke-width="3" stroke-linecap="round"/>
+                </svg>
             </div>
 
         </section>
@@ -410,7 +431,7 @@
 
             @if (session('status') === 'profile-updated')
                 <div class="profile-alert-success">
-                    ✓ Profil berhasil diperbarui!
+                    Profil berhasil diperbarui!
                 </div>
             @endif
 
@@ -467,7 +488,14 @@
             <div class="profile-form-header">
 
                 <div class="password-heading">
-                    <div class="password-icon">🔐</div>
+                    <div class="password-icon" aria-hidden="true">
+                        <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="6" y="14" width="20" height="14" rx="3" fill="#7FA889"/>
+                            <path d="M10 14V10C10 6.7 12.7 4 16 4C19.3 4 22 6.7 22 10V14" stroke="#315C42" stroke-width="3" stroke-linecap="round"/>
+                            <circle cx="16" cy="20" r="2" fill="#FFFFFF"/>
+                            <path d="M16 22V24" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                    </div>
 
                     <div>
                         <h3>Ubah Password</h3>
@@ -479,7 +507,7 @@
 
             @if (session('status') === 'password-updated')
                 <div class="profile-alert-success">
-                    ✓ Password berhasil diubah!
+                    Password berhasil diubah!
                 </div>
             @endif
 

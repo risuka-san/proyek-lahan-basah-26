@@ -1,23 +1,23 @@
 @extends('layouts.app')
 
-@section('title', 'Tentang SIFARA - Wetland Learning Platform')
+@section('title', 'Tentang SIFARA - Geography Learning Platform')
 
 @section('content')
 
 <style>
-    @import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Nunito:wght@400;600;700;800;900&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Playfair+Display:wght@600;700;800&display=swap');
 
     .about-page {
-        --forest: #2E7D4F;
-        --forest-dark: #1B5E3A;
-        --green: #4CAF7A;
-        --sage: #A8D5B5;
-        --mint: #E8F8EE;
-        --cream: #FBFCF5;
-        --gold: #FFD54F;
-        --sky: #B3E5FC;
-        --text: #2D4A3A;
-        --muted: #6B8A76;
+        --forest: #496B55;
+        --forest-dark: #263F32;
+        --green: #6F9675;
+        --sage: #A8BFA5;
+        --mint: #EAF1E8;
+        --cream: #F7F7F0;
+        --gold: #D9BC72;
+        --sky: #DCE8DF;
+        --text: #344B3B;
+        --muted: #788477;
 
         background: linear-gradient(180deg, #FBFCF5 0%, #F0F9EC 100%);
         color: var(--text);
@@ -66,7 +66,7 @@
     }
 
     .about-hero h1 {
-        font-family: 'Baloo 2', 'Nunito', cursive;
+        font-family: 'Playfair Display', serif;
         font-size: clamp(2.3rem, 5vw, 3.8rem);
         line-height: 1.15;
         color: var(--forest-dark);
@@ -167,7 +167,7 @@
     }
 
     .about-heading h2 {
-        font-family: 'Baloo 2', 'Nunito', cursive;
+        font-family: 'Playfair Display', serif;
         color: var(--forest-dark);
         font-size: 2.3rem;
         margin-bottom: 12px;
@@ -211,7 +211,7 @@
     }
 
     .about-description h3 {
-        font-family: 'Baloo 2', 'Nunito', cursive;
+        font-family: 'Playfair Display', serif;
         color: var(--forest-dark);
         font-size: 1.5rem;
         font-weight: 800;
@@ -276,7 +276,7 @@
 
     .objective-card h3 {
         color: var(--forest-dark);
-        font-family: 'Baloo 2', 'Nunito', cursive;
+        font-family: 'Playfair Display', serif;
         font-size: 1.15rem;
         margin-bottom: 12px;
         font-weight: 800;
@@ -364,7 +364,7 @@
 
     .developer-card h3, .supervisor-card h3 {
         color: var(--forest-dark);
-        font-family: 'Baloo 2', 'Nunito', cursive;
+        font-family: 'Playfair Display', serif;
         margin: 12px 0 5px;
         font-size: 1.4rem;
         font-weight: 800;
@@ -519,7 +519,7 @@
 
     .reference-detail h3 {
         color: var(--forest-dark);
-        font-family: 'Baloo 2', 'Nunito', cursive;
+        font-family: 'Playfair Display', serif;
         font-size: 1.15rem;
         margin-bottom: 8px;
         font-weight: 800;
@@ -594,7 +594,7 @@
     }
 
     .about-closing h2 {
-        font-family: 'Baloo 2', 'Nunito', cursive;
+        font-family: 'Playfair Display', serif;
         margin: 0 0 15px;
         font-size: 2.2rem;
         font-weight: 800;
@@ -663,19 +663,15 @@
     <section class="about-hero">
         <div class="about-container">
             <div class="about-hero-content">
-                <span class="about-label">WETLAND LEARNING PLATFORM</span>
+                <span class="about-label">GEOGRAPHY LEARNING PLATFORM</span>
 
                 <h1>
-                    Menjelajahi Keajaiban
-                    <span>Ekosistem Lahan Basah</span>
+                    Menjelajahi Wawasan
+                    <span>Geografi Indonesia dan Dunia</span>
                 </h1>
 
                 <p>
-                    SIFARA merupakan media pembelajaran interaktif
-                    berbasis website yang dirancang untuk membantu
-                    siswa mengenal, memahami, dan mengeksplorasi
-                    keanekaragaman ekosistem lahan basah melalui
-                    pengalaman belajar digital.
+                    SIFARA merupakan media pembelajaran Geografi interaktif berbasis website yang dirancang untuk membantu siswa SMA kelas XI memahami fenomena geosfer, persebaran flora dan fauna, potensi sumber daya alam, serta pengelolaan lingkungan melalui pengalaman belajar digital.
                 </p>
 
                 <a href="{{ route('dashboard') }}" class="about-button">
@@ -700,7 +696,7 @@
             <div class="about-heading">
                 <span class="about-label">ABOUT SIFARA</span>
                 <h2>Tentang SIFARA</h2>
-                <p>Mengenal lebih dekat media pembelajaran ekosistem lahan basah.</p>
+                <p>Mengenal lebih dekat media pembelajaran Geografi kelas XI.</p>
             </div>
 
             <div class="about-description">
@@ -713,12 +709,12 @@
                 </div>
 
                 <div>
-                    <h3>Belajar Mengenal Lahan Basah</h3>
+                    <h3>Belajar Memahami Geografi</h3>
                     <p>
-                        SIFARA adalah media pembelajaran Geografi interaktif berbasis website untuk siswa SMA kelas XI yang berfokus pada ekosistem lahan basah di Indonesia. Materi di dalamnya disusun selaras dengan pembahasan Biosfer mengenai persebaran flora dan fauna pada hutan bakau dan hutan rawa gambut, serta Pengelolaan Sumber Daya Alam, yang mengulas pemanfaatan rawa pasang surut dan rawa lebak sebagai lahan pertanian.
+                        SIFARA adalah media pembelajaran Geografi interaktif berbasis website untuk siswa SMA kelas XI. Materi pembelajaran disusun dalam lima ruang lingkup, yaitu Biosfer dan Kehidupan di Bumi, Bioma dan Persebaran Flora Fauna Dunia, Persebaran Flora dan Fauna Indonesia, Sumber Daya Alam dan Persebarannya, serta Pengelolaan Lingkungan dan Pembangunan Berkelanjutan.
                     </p>
                     <p>
-                        Dilengkapi dengan materi interaktif, permainan edukatif, dan kuis, SIFARA membantu siswa memahami karakteristik tiap ekosistem beserta keanekaragaman hayatinya dengan cara yang seru, mudah dipahami, sekaligus mendorong kepedulian terhadap kelestarian lingkungan.
+                        Dilengkapi dengan materi pembelajaran, permainan edukatif, dan kuis, SIFARA membantu siswa mempelajari konsep Geografi secara bertahap. Setiap level dirancang untuk mendukung pemahaman siswa melalui kegiatan membaca, berlatih, dan menguji pemahaman.
                     </p>
                 </div>
             </div>
@@ -745,8 +741,8 @@
                             <path d="M8 7H16M8 11H13" stroke="#2E7D4F" stroke-width="1.5" stroke-linecap="round"/>
                         </svg>
                     </div>
-                    <h3>Memahami Konsep Lahan Basah</h3>
-                    <p>Mengenal pengertian, karakteristik fisik, serta klasifikasi (tipologi) ekosistem lahan basah yang ada di Indonesia.</p>
+                    <h3>Memahami Konsep Biosfer</h3>
+                    <p>Memahami pengertian biosfer, jenjang kehidupan, serta faktor yang memengaruhi persebaran flora dan fauna.</p>
                 </div>
 
                 <div class="objective-card">
@@ -759,7 +755,7 @@
                         </svg>
                     </div>
                     <h3>Menganalisis Persebaran Biosfer</h3>
-                    <p>Mengidentifikasi persebaran flora dan fauna khas beserta bentuk adaptasinya pada ekosistem hutan bakau (mangrove) dan hutan rawa gambut di Indonesia.</p>
+                    <p>Menganalisis karakteristik bioma dan pola persebaran flora serta fauna di berbagai wilayah dunia dan Indonesia.</p>
                 </div>
 
                 <div class="objective-card">
@@ -772,7 +768,7 @@
                         </svg>
                     </div>
                     <h3>Mengkaji Pengelolaan Sumber Daya Alam</h3>
-                    <p>Memahami bentuk pemanfaatan lahan basah secara berkelanjutan di sektor pertanian, khususnya pengelolaan sawah pasang surut dan sawah lebak.</p>
+                    <p>Mengidentifikasi potensi dan persebaran sumber daya alam serta bentuk pemanfaatannya di Indonesia.</p>
                 </div>
 
                 <div class="objective-card">
@@ -784,7 +780,7 @@
                         </svg>
                     </div>
                     <h3>Menumbuhkan Kepedulian Lingkungan</h3>
-                    <p>Meningkatkan kesadaran siswa akan pentingnya menjaga keseimbangan dan kelestarian ekosistem lahan basah dari ancaman kerusakan lingkungan.</p>
+                    <p>Menumbuhkan kepedulian terhadap pengelolaan lingkungan, konservasi, dan pembangunan berkelanjutan.</p>
                 </div>
             </div>
         </div>
@@ -892,84 +888,56 @@
     <section class="about-references">
         <div class="about-container">
             <div class="about-heading">
-                <span class="about-label">LEARNING RESOURCES</span>
-                <h2>Daftar Pustaka</h2>
-                <p>Referensi buku, dokumen, dan sumber informasi yang berkaitan dengan pembelajaran ekosistem lahan basah.</p>
+                <span class="about-label">LEARNING SCOPE</span>
+                <h2>Ruang Lingkup Pembelajaran</h2>
+                <p>Lima level pembelajaran Geografi kelas XI yang tersedia di SIFARA.</p>
             </div>
 
             <div class="reference-list">
-                <!-- REFERENCE 1 -->
                 <div class="reference-item">
                     <span class="reference-index">01</span>
                     <div class="reference-detail">
-                        <h3>Pengetahuan Lingkungan Lahan Basah</h3>
-                        <p>
-                            Komari, N., Haryanti, N. H., Kadarsah, A., & Afandi, P. (2026).
-                            <i>Buku Ajar Pengetahuan Lingkungan Lahan Basah (Wetlands): Indonesia.</i>
-                            Lambung Mangkurat University Press.
-                        </p>
-                        <a href="https://bukuvirtual.ulm.ac.id/omp/index.php/lmupress/catalog/book/416" target="_blank" rel="noopener noreferrer">
-                            Lihat sumber buku 
-                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 12H19M19 12L13 6M19 12L13 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                        </a>
+                        <h3>Biosfer dan Kehidupan di Bumi</h3>
+                        <p>Mempelajari pengertian biosfer, jenjang kehidupan, faktor persebaran flora dan fauna, serta hubungan makhluk hidup dengan lingkungannya.</p>
                     </div>
                 </div>
 
-                <!-- REFERENCE 2 -->
                 <div class="reference-item">
                     <span class="reference-index">02</span>
                     <div class="reference-detail">
-                        <h3>Pedoman Teknis Pengembangan Lahan Rawa</h3>
-                        <p>
-                            Kementerian Pertanian Republik Indonesia. (2017).
-                            <i>Pedoman Teknis Pengembangan Pemanfaatan Lahan Rawa/Gambut Terpadu TA. 2017.</i>
-                            Direktorat Jenderal Prasarana dan Sarana Pertanian.
-                        </p>
-                        <a href="https://psp.pertanian.go.id/storage/158/PEDOMAN_TEKNIS_PENGEMBANGAN_PEMANFAATAN_LAHAN_RAWA_TERPADU_2017.pdf" target="_blank" rel="noopener noreferrer">
-                            Baca dokumen PDF
-                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 12H19M19 12L13 6M19 12L13 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                        </a>
+                        <h3>Bioma dan Persebaran Flora Fauna Dunia</h3>
+                        <p>Mengenal karakteristik berbagai bioma dunia, faktor persebaran, zona fauna, serta contoh flora dan fauna pada berbagai bioma.</p>
                     </div>
                 </div>
 
-                <!-- REFERENCE 3 -->
                 <div class="reference-item">
                     <span class="reference-index">03</span>
                     <div class="reference-detail">
-                        <h3>Perlindungan dan Pengelolaan Ekosistem Gambut</h3>
-                        <p>
-                            Suryadiputera, N. (2022).
-                            <i>Bahan Pelatihan untuk Penguatan Kapasitas Parapihak dalam Upaya Perlindungan dan Pengelolaan Gambut.</i>
-                            Deutsche Gesellschaft für Internationale Zusammenarbeit (GIZ) GmbH, PROPEAT.
-                        </p>
-                        <a href="https://pkgppkl.menlhk.go.id/v0/wp-content/uploads/2023/08/06-Bahan-Pelatihan-Pengelolaan-Gambut-Berkelanjutan.pdf" target="_blank" rel="noopener noreferrer">
-                            Baca dokumen PDF
-                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 12H19M19 12L13 6M19 12L13 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                        </a>
+                        <h3>Persebaran Flora dan Fauna Indonesia</h3>
+                        <p>Mempelajari karakteristik flora dan fauna Indonesia, kawasan Asiatis, Peralihan, dan Australis, serta upaya konservasi.</p>
                     </div>
                 </div>
 
-                <!-- REFERENCE 4 -->
                 <div class="reference-item">
                     <span class="reference-index">04</span>
                     <div class="reference-detail">
-                        <h3>Ekosistem Gambut dan Mangrove Indonesia</h3>
-                        <p>
-                            Lusiana, S., & Rembonita, T. (2023).
-                            <i>Mengalunkan Kisah Lahan Basah Gambut dan Mangrove.</i>
-                            Yayasan Konservasi Cakrawala Indonesia. ISBN 978-623-10-3576-9.
-                        </p>
-                        <a href="https://konservasi-id.org/wp-content/uploads/2025/03/BUKUMENGALUNKANKISAHLAHANBASAH_ID.pdf" target="_blank" rel="noopener noreferrer">
-                            Baca dokumen PDF
-                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 12H19M19 12L13 6M19 12L13 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                        </a>
+                        <h3>Sumber Daya Alam dan Persebarannya</h3>
+                        <p>Mengidentifikasi klasifikasi, potensi, dan persebaran sumber daya kehutanan, pertambangan, kelautan, pertanian, perkebunan, dan pariwisata.</p>
+                    </div>
+                </div>
+
+                <div class="reference-item">
+                    <span class="reference-index">05</span>
+                    <div class="reference-detail">
+                        <h3>Pengelolaan Lingkungan dan Pembangunan Berkelanjutan</h3>
+                        <p>Memahami prinsip pengelolaan sumber daya alam, pembangunan berkelanjutan, AMDAL, pelestarian lingkungan, dan konservasi.</p>
                     </div>
                 </div>
             </div>
 
             <div class="reference-note">
-                <strong>Catatan Referensi</strong>
-                <p>Referensi di atas merupakan sumber awal yang relevan untuk mendukung pembelajaran ekosistem lahan basah. Penggunaan setiap sumber perlu disesuaikan dengan materi dan informasi yang benar-benar dikutip atau diadaptasi dalam SIFARA.</p>
+                <strong>Informasi Pembelajaran</strong>
+                <p>Materi SIFARA disusun berdasarkan lima level pembelajaran Geografi kelas XI. Setiap level dilengkapi materi, latihan interaktif, dan kuis untuk membantu siswa mengevaluasi pemahamannya.</p>
             </div>
         </div>
     </section>
@@ -981,8 +949,8 @@
             <path d="M5 19C5 19 7 9 19 5C19 5 21 17 11 19C8 19.6 5 19 5 19Z" fill="#FFD54F" stroke="#FFD54F" stroke-width="1.4" stroke-linejoin="round"/>
             <path d="M5 19L11 13" stroke="#1B5E3A" stroke-width="1.4" stroke-linecap="round"/>
         </svg>
-        <h2>Mengenal Alam, Menjaga Masa Depan</h2>
-        <p>Mari belajar memahami ekosistem lahan basah dan meningkatkan kepedulian terhadap lingkungan.</p>
+        <h2>Memahami Geografi, Menjaga Masa Depan</h2>
+        <p>Mari jelajahi fenomena Geografi, pahami potensi wilayah, dan tumbuhkan kepedulian terhadap lingkungan.</p>
         <a href="{{ route('dashboard') }}" class="about-button">
             Jelajahi SIFARA
             <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">

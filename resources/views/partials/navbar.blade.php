@@ -1,19 +1,20 @@
+
 <nav class="sifara-navbar">
     <div class="sifara-nav-inner">
 
         <!-- BRAND -->
         <a href="{{ Auth::check() ? route('dashboard') : url('/') }}"
            class="sifara-brand">
-            
-            <!-- LOGO BERBENTUK KOTAK DENGAN BORDER KUNING -->
+
+            <!-- LOGO -->
             <div class="sifara-brand-logo">
                 <img src="{{ asset('images/logo.jpg') }}" alt="Logo SIFARA">
             </div>
-            
-            <!-- TEKS DI SEBELAH LOGO (DIKEMBALIKAN) -->
+
+            <!-- BRAND TEXT -->
             <span class="sifara-brand-text">
                 <strong>SIFARA</strong>
-                <small>WETLAND LEARNING PLATFORM</small>
+                <small>GEOGRAPHY LEARNING PLATFORM</small>
             </span>
         </a>
 
@@ -83,11 +84,11 @@
         gap: 25px;
     }
 
-    /* ============ BRAND / LOGO & TEXT ============ */
+    /* BRAND / LOGO */
     .sifara-brand {
         display: flex;
         align-items: center;
-        gap: 14px; /* Jarak antara logo kotak dan teks */
+        gap: 14px;
         text-decoration: none !important;
         transition: transform .3s cubic-bezier(.34, 1.56, .64, 1);
     }
@@ -96,17 +97,16 @@
         transform: scale(1.02);
     }
 
-    /* LOGO KOTAK */
     .sifara-brand-logo {
-        width: 60px;  
+        width: 60px;
         height: 60px;
-        border-radius: 16px; /* Membuat sudutnya membulat (kotak) */
+        border-radius: 16px;
         background: #FFFFFF;
         display: flex;
         align-items: center;
         justify-content: center;
-        overflow: hidden; 
-        border: 3px solid #FFD54F; /* Border kuning */
+        overflow: hidden;
+        border: 3px solid #FFD54F;
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
         transition: transform .3s ease;
     }
@@ -118,10 +118,10 @@
     .sifara-brand-logo img {
         width: 100%;
         height: 100%;
-        object-fit: cover; 
+        object-fit: cover;
     }
 
-    /* TEKS SIFARA */
+    /* BRAND TEXT */
     .sifara-brand-text {
         display: flex;
         flex-direction: column;
@@ -144,7 +144,7 @@
         font-weight: 700;
     }
 
-    /* ============ NAV LINKS ============ */
+    /* NAVIGATION LINKS */
     .sifara-nav-links {
         display: flex;
         align-items: center;
@@ -161,7 +161,6 @@
         transition: .2s;
     }
 
-    /* Garis bawah animasi saat hover */
     .sifara-nav-links a::after {
         content: '';
         position: absolute;
@@ -183,7 +182,7 @@
         width: 100%;
     }
 
-    /* ============ NAV ACTIONS ============ */
+    /* USER ACTIONS */
     .sifara-nav-actions {
         display: flex;
         align-items: center;
@@ -230,7 +229,7 @@
         box-shadow: 0 6px 15px rgba(255, 213, 79, .5);
     }
 
-    /* ============ RESPONSIVE ============ */
+    /* RESPONSIVE */
     @media(max-width: 850px) {
         .sifara-navbar {
             padding: 0 20px;
@@ -248,7 +247,7 @@
             height: 50px;
             border-radius: 12px;
         }
-        
+
         .sifara-brand-text strong {
             font-size: 1.4rem;
         }
@@ -284,7 +283,7 @@
             padding: 8px 14px;
             font-size: .8rem;
         }
-        
+
         .sifara-brand-text small {
             font-size: .55rem;
         }

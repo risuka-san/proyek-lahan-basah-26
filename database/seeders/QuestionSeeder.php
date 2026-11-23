@@ -6,6 +6,7 @@ use Illuminate\Database\Seeder;
 use App\Models\Level;
 use App\Models\Question;
 use App\Models\QuestionOption;
+use Illuminate\Support\Facades\DB;
 
 class QuestionSeeder extends Seeder
 {
@@ -13,320 +14,319 @@ class QuestionSeeder extends Seeder
     {
         $quizData = [
 
-            // LEVEL 1 - KONSEP & TIPOLOGI LAHAN BASAH
-            'KL' => [
+            // LEVEL 1 - BIOSFER DAN KEHIDUPAN DI BUMI
+            'BIO' => [
                 [
-                    'pertanyaan' => 'Apa yang dimaksud dengan lahan basah?',
+                    'pertanyaan' => 'Apa yang dimaksud dengan biosfer?',
                     'jawaban' => [
-                        'A' => 'Wilayah daratan yang selalu kering sepanjang tahun.',
-                        'B' => 'Ekosistem yang keberadaannya dipengaruhi oleh air, baik tergenang permanen maupun musiman.',
-                        'C' => 'Wilayah yang hanya terdiri atas perairan laut dalam.',
-                        'D' => 'Kawasan yang seluruh permukaannya tertutup bangunan.',
+                        'A' => 'Seluruh wilayah bumi yang hanya terdiri atas batuan dan mineral.',
+                        'B' => 'Bagian bumi yang menjadi tempat berlangsungnya kehidupan makhluk hidup.',
+                        'C' => 'Lapisan atmosfer yang tidak dapat ditembus cahaya matahari.',
+                        'D' => 'Wilayah perairan laut dalam yang tidak memiliki organisme.',
                     ],
                     'benar' => 'B',
                 ],
                 [
-                    'pertanyaan' => 'Salah satu karakteristik utama ekosistem lahan basah adalah...',
+                    'pertanyaan' => 'Urutan jenjang kehidupan dari tingkat paling sederhana hingga paling luas adalah ...',
                     'jawaban' => [
-                        'A' => 'Tidak memiliki hubungan dengan kondisi air.',
-                        'B' => 'Selalu memiliki tanah yang kering dan keras.',
-                        'C' => 'Tanahnya dapat jenuh air atau mengalami genangan secara permanen maupun musiman.',
-                        'D' => 'Hanya dapat ditemukan di wilayah pegunungan.',
-                    ],
-                    'benar' => 'C',
-                ],
-                [
-                    'pertanyaan' => 'Apa perbedaan utama rawa lebak dan rawa pasang surut?',
-                    'jawaban' => [
-                        'A' => 'Rawa lebak terutama dipengaruhi curah hujan dan luapan sungai.',
-                        'B' => 'Rawa lebak selalu dipengaruhi langsung oleh pasang surut air laut.',
-                        'C' => 'Rawa lebak hanya ditemukan di kawasan pesisir.',
-                        'D' => 'Rawa lebak tidak pernah mengalami genangan air.',
+                        'A' => 'Individu, populasi, komunitas, ekosistem, bioma, biosfer.',
+                        'B' => 'Populasi, individu, ekosistem, komunitas, biosfer, bioma.',
+                        'C' => 'Individu, komunitas, populasi, bioma, ekosistem, biosfer.',
+                        'D' => 'Bioma, ekosistem, komunitas, populasi, individu, biosfer.',
                     ],
                     'benar' => 'A',
                 ],
                 [
-                    'pertanyaan' => 'Bagaimana lahan basah dapat membantu mengurangi risiko banjir?',
+                    'pertanyaan' => 'Berikut ini yang termasuk faktor iklim yang memengaruhi persebaran flora dan fauna adalah ...',
                     'jawaban' => [
-                        'A' => 'Mempercepat seluruh air hujan mengalir ke laut.',
-                        'B' => 'Menghilangkan seluruh air dari lingkungan.',
-                        'C' => 'Menghambat semua aliran sungai secara permanen.',
-                        'D' => 'Menampung dan menyimpan kelebihan air ketika hujan atau terjadi luapan sungai.',
+                        'A' => 'Jenis batuan, kemiringan lereng, dan struktur tanah saja.',
+                        'B' => 'Kepadatan penduduk dan kegiatan perdagangan.',
+                        'C' => 'Suhu, kelembapan, curah hujan, angin, dan sinar matahari.',
+                        'D' => 'Jarak antarnegara dan batas administrasi wilayah.',
+                    ],
+                    'benar' => 'C',
+                ],
+                [
+                    'pertanyaan' => 'Kaktus dapat bertahan hidup di lingkungan gurun karena memiliki kemampuan untuk ...',
+                    'jawaban' => [
+                        'A' => 'Menyerap air laut melalui permukaan daun.',
+                        'B' => 'Menghasilkan air dari batuan di sekitarnya.',
+                        'C' => 'Menghentikan seluruh proses penguapan.',
+                        'D' => 'Menyimpan air pada bagian tubuhnya.',
                     ],
                     'benar' => 'D',
                 ],
                 [
-                    'pertanyaan' => 'Mengapa pengeringan lahan gambut secara berlebihan perlu dicegah?',
+                    'pertanyaan' => 'Dalam suatu ekosistem, organisme yang berperan menghasilkan bahan organik melalui fotosintesis disebut ...',
                     'jawaban' => [
-                        'A' => 'Agar seluruh tumbuhan gambut dapat diganti dengan tanaman perkebunan.',
-                        'B' => 'Karena pengeringan dapat meningkatkan kerentanan gambut terhadap kebakaran dan mengganggu fungsi hidrologisnya.',
-                        'C' => 'Karena gambut tidak dapat menyimpan air.',
-                        'D' => 'Agar tanah gambut berubah menjadi tanah berbatu.',
+                        'A' => 'Produsen.',
+                        'B' => 'Konsumen tingkat akhir.',
+                        'C' => 'Pengurai.',
+                        'D' => 'Detritivor.',
+                    ],
+                    'benar' => 'A',
+                ],
+            ],
+
+            // LEVEL 2 - BIOMA DAN PERSEBARAN FLORA FAUNA DUNIA
+            'BMD' => [
+                [
+                    'pertanyaan' => 'Apa yang menjadi ciri utama suatu bioma?',
+                    'jawaban' => [
+                        'A' => 'Kesamaan batas administrasi negara.',
+                        'B' => 'Kesamaan jenis kegiatan ekonomi penduduk.',
+                        'C' => 'Karakteristik iklim serta vegetasi dan kehidupan hewan yang khas.',
+                        'D' => 'Kesamaan jumlah penduduk di seluruh wilayah.',
+                    ],
+                    'benar' => 'C',
+                ],
+                [
+                    'pertanyaan' => 'Bioma yang memiliki curah hujan sangat rendah dan vegetasi yang mampu beradaptasi terhadap kekurangan air adalah ...',
+                    'jawaban' => [
+                        'A' => 'Hutan gugur.',
+                        'B' => 'Gurun.',
+                        'C' => 'Taiga.',
+                        'D' => 'Hutan hujan tropis.',
+                    ],
+                    'benar' => 'B',
+                ],
+                [
+                    'pertanyaan' => 'Bioma taiga umumnya didominasi oleh vegetasi ...',
+                    'jawaban' => [
+                        'A' => 'Kaktus dan semak berduri.',
+                        'B' => 'Rumput pendek tanpa pepohonan.',
+                        'C' => 'Pohon berdaun lebar yang selalu hijau.',
+                        'D' => 'Hutan konifer seperti pinus dan jenis pohon berdaun jarum.',
+                    ],
+                    'benar' => 'D',
+                ],
+                [
+                    'pertanyaan' => 'Wilayah persebaran fauna Neotropik terutama meliputi ...',
+                    'jawaban' => [
+                        'A' => 'Amerika Tengah dan Amerika Selatan.',
+                        'B' => 'Eropa dan sebagian besar Asia.',
+                        'C' => 'Afrika bagian selatan Gurun Sahara.',
+                        'D' => 'Australia dan Papua.',
+                    ],
+                    'benar' => 'A',
+                ],
+                [
+                    'pertanyaan' => 'Bioma hutan hujan tropis umumnya memiliki karakteristik ...',
+                    'jawaban' => [
+                        'A' => 'Curah hujan sangat rendah dan suhu ekstrem.',
+                        'B' => 'Musim dingin panjang dengan tanah membeku.',
+                        'C' => 'Curah hujan tinggi, udara lembap, dan vegetasi lebat.',
+                        'D' => 'Didominasi padang rumput tanpa pepohonan.',
+                    ],
+                    'benar' => 'C',
+                ],
+            ],
+
+            // LEVEL 3 - PERSEBARAN FLORA DAN FAUNA INDONESIA
+            'FFI' => [
+                [
+                    'pertanyaan' => 'Persebaran fauna Indonesia secara umum dibagi menjadi tiga kawasan, yaitu ...',
+                    'jawaban' => [
+                        'A' => 'Nearktik, Neotropik, dan Paleartik.',
+                        'B' => 'Asiatis, Peralihan, dan Australis.',
+                        'C' => 'Oriental, Ethiopian, dan Neotropik.',
+                        'D' => 'Barat, Utara, dan Selatan.',
+                    ],
+                    'benar' => 'B',
+                ],
+                [
+                    'pertanyaan' => 'Garis Wallace dikenal sebagai batas antara kawasan fauna ...',
+                    'jawaban' => [
+                        'A' => 'Asiatis dan Peralihan.',
+                        'B' => 'Peralihan dan Australis.',
+                        'C' => 'Australis dan Paleartik.',
+                        'D' => 'Neotropik dan Nearktik.',
+                    ],
+                    'benar' => 'A',
+                ],
+                [
+                    'pertanyaan' => 'Hewan berikut yang merupakan contoh fauna khas kawasan Peralihan Indonesia adalah ...',
+                    'jawaban' => [
+                        'A' => 'Gajah dan harimau.',
+                        'B' => 'Kanguru dan kasuari.',
+                        'C' => 'Anoa dan babirusa.',
+                        'D' => 'Beruang kutub dan karibu.',
+                    ],
+                    'benar' => 'C',
+                ],
+                [
+                    'pertanyaan' => 'Salah satu karakteristik vegetasi di wilayah Nusa Tenggara adalah ...',
+                    'jawaban' => [
+                        'A' => 'Hutan tundra yang didominasi lumut.',
+                        'B' => 'Hutan konifer yang selalu tertutup salju.',
+                        'C' => 'Hutan hujan tropis yang selalu sangat basah di seluruh wilayah.',
+                        'D' => 'Vegetasi sabana dan stepa yang menyesuaikan kondisi relatif kering.',
+                    ],
+                    'benar' => 'D',
+                ],
+                [
+                    'pertanyaan' => 'Upaya yang tepat untuk menjaga kelestarian flora dan fauna Indonesia adalah ...',
+                    'jawaban' => [
+                        'A' => 'Melakukan perburuan satwa liar tanpa batas.',
+                        'B' => 'Melindungi habitat dan melakukan konservasi flora serta fauna.',
+                        'C' => 'Mengubah seluruh kawasan hutan menjadi permukiman.',
+                        'D' => 'Memperjualbelikan satwa dilindungi secara bebas.',
                     ],
                     'benar' => 'B',
                 ],
             ],
 
-            // LEVEL 2 - EKOSISTEM RAWA PASANG SURUT
-            'PS' => [
+            // LEVEL 4 - SUMBER DAYA ALAM DAN PERSEBARANNYA
+            'SDA' => [
                 [
-                    'pertanyaan' => 'Apa faktor utama yang memengaruhi perubahan tinggi muka air pada rawa pasang surut?',
+                    'pertanyaan' => 'Berdasarkan potensinya, sumber daya alam dapat dikelompokkan menjadi ...',
                     'jawaban' => [
-                        'A' => 'Aktivitas gunung berapi.',
-                        'B' => 'Perubahan suhu udara saja.',
-                        'C' => 'Pasang dan surut air laut.',
-                        'D' => 'Pergerakan angin darat saja.',
-                    ],
-                    'benar' => 'C',
-                ],
-                [
-                    'pertanyaan' => 'Apa yang terjadi pada kawasan rawa pasang surut ketika air laut mengalami pasang?',
-                    'jawaban' => [
-                        'A' => 'Muka air dapat meningkat dan air bergerak memasuki kawasan rawa melalui saluran yang terhubung.',
-                        'B' => 'Seluruh air rawa langsung menghilang.',
-                        'C' => 'Tanah rawa berubah menjadi tanah kering.',
-                        'D' => 'Vegetasi rawa berhenti tumbuh secara permanen.',
+                        'A' => 'Sumber daya alam material, energi, dan ruang.',
+                        'B' => 'Sumber daya alam lokal, nasional, dan internasional.',
+                        'C' => 'Sumber daya alam darat, kota, dan desa.',
+                        'D' => 'Sumber daya alam tetap, sementara, dan buatan.',
                     ],
                     'benar' => 'A',
                 ],
                 [
-                    'pertanyaan' => 'Mengapa kondisi air pada rawa pasang surut dapat berbeda antara satu kawasan dan kawasan lainnya?',
+                    'pertanyaan' => 'Salah satu contoh potensi sumber daya pertambangan di Kalimantan Selatan adalah ...',
                     'jawaban' => [
-                        'A' => 'Karena semua rawa memiliki jenis tanah yang sama.',
-                        'B' => 'Karena rawa tidak dipengaruhi lingkungan sekitarnya.',
-                        'C' => 'Karena air rawa selalu memiliki kadar garam yang sama.',
-                        'D' => 'Karena pengaruh pasang surut, hubungan dengan laut, dan kondisi air setempat dapat berbeda.',
+                        'A' => 'Timah di Kepulauan Bangka Belitung.',
+                        'B' => 'Nikel di Sulawesi.',
+                        'C' => 'Intan di Martapura.',
+                        'D' => 'Tembaga di Papua.',
                     ],
-                    'benar' => 'D',
+                    'benar' => 'C',
                 ],
                 [
-                    'pertanyaan' => 'Salah satu jenis vegetasi yang dapat ditemukan pada kawasan rawa pasang surut tertentu adalah...',
+                    'pertanyaan' => 'Daerah yang dikenal memiliki potensi sumber daya nikel di Indonesia adalah ...',
                     'jawaban' => [
-                        'A' => 'Kaktus gurun.',
-                        'B' => 'Nipah.',
-                        'C' => 'Edelweis.',
-                        'D' => 'Pinus pegunungan.',
+                        'A' => 'Pulau Jawa bagian barat saja.',
+                        'B' => 'Sulawesi dan beberapa wilayah Indonesia timur.',
+                        'C' => 'Kepulauan Seribu.',
+                        'D' => 'Pulau Bali bagian selatan saja.',
                     ],
                     'benar' => 'B',
                 ],
                 [
-                    'pertanyaan' => 'Jika saluran air yang menghubungkan rawa dengan sungai atau kawasan pasang surut terganggu, apa dampak yang mungkin terjadi?',
+                    'pertanyaan' => 'Pemanfaatan sumber daya kelautan yang sesuai dengan prinsip pengelolaan berkelanjutan adalah ...',
                     'jawaban' => [
-                        'A' => 'Seluruh ekosistem otomatis menjadi lebih subur.',
-                        'B' => 'Tidak ada perubahan pada kondisi air.',
-                        'C' => 'Sirkulasi air dan kondisi hidrologis rawa dapat terganggu.',
-                        'D' => 'Rawa berubah menjadi laut dalam.',
+                        'A' => 'Menangkap ikan menggunakan bahan peledak.',
+                        'B' => 'Mengambil seluruh biota laut tanpa memperhatikan kelestariannya.',
+                        'C' => 'Membuang limbah industri ke laut.',
+                        'D' => 'Memanfaatkan hasil laut dengan memperhatikan daya dukung ekosistem.',
                     ],
-                    'benar' => 'C',
+                    'benar' => 'D',
+                ],
+                [
+                    'pertanyaan' => 'Contoh pemanfaatan sumber daya alam di bidang perkebunan adalah ...',
+                    'jawaban' => [
+                        'A' => 'Budidaya tanaman kelapa sawit dan karet.',
+                        'B' => 'Penambangan bijih nikel.',
+                        'C' => 'Pengeboran minyak bumi.',
+                        'D' => 'Penangkapan ikan di laut lepas.',
+                    ],
+                    'benar' => 'A',
                 ],
             ],
 
-            // LEVEL 3 - RAWA LEBAK
-            'RL' => [
+            // LEVEL 5 - PENGELOLAAN LINGKUNGAN DAN PEMBANGUNAN BERKELANJUTAN
+            'PL' => [
                 [
-                    'pertanyaan' => 'Apa yang terutama memengaruhi terjadinya genangan pada rawa lebak?',
+                    'pertanyaan' => 'Apa prinsip utama pengelolaan sumber daya alam secara berkelanjutan?',
                     'jawaban' => [
-                        'A' => 'Gelombang laut dalam.',
-                        'B' => 'Aktivitas pasang surut laut secara langsung.',
-                        'C' => 'Salju yang mencair.',
-                        'D' => 'Curah hujan dan luapan sungai.',
-                    ],
-                    'benar' => 'D',
-                ],
-                [
-                    'pertanyaan' => 'Kapan genangan pada rawa lebak umumnya meningkat?',
-                    'jawaban' => [
-                        'A' => 'Ketika musim hujan dan terjadi peningkatan debit sungai.',
-                        'B' => 'Ketika tidak terjadi hujan sepanjang tahun.',
-                        'C' => 'Ketika seluruh aliran sungai mengering.',
-                        'D' => 'Ketika suhu udara selalu rendah.',
-                    ],
-                    'benar' => 'A',
-                ],
-                [
-                    'pertanyaan' => 'Apa yang membedakan lebak dangkal dengan lebak dalam?',
-                    'jawaban' => [
-                        'A' => 'Jenis hewan yang hidup di dalamnya saja.',
-                        'B' => 'Kedalaman dan kondisi genangan air.',
-                        'C' => 'Warna langit di atas kawasan rawa.',
-                        'D' => 'Jarak kawasan terhadap pegunungan saja.',
-                    ],
-                    'benar' => 'B',
-                ],
-                [
-                    'pertanyaan' => 'Mengapa masyarakat perlu memperhatikan pola musim ketika memanfaatkan rawa lebak?',
-                    'jawaban' => [
-                        'A' => 'Agar genangan air selalu dihilangkan.',
-                        'B' => 'Agar sungai tidak mengalami aliran air.',
-                        'C' => 'Karena tinggi dan lama genangan dapat memengaruhi kegiatan pertanian serta aktivitas masyarakat.',
-                        'D' => 'Karena musim tidak memiliki pengaruh terhadap rawa lebak.',
+                        'A' => 'Mengutamakan pemanfaatan sebanyak-banyaknya dalam waktu singkat.',
+                        'B' => 'Menghentikan seluruh kegiatan pemanfaatan sumber daya alam.',
+                        'C' => 'Memenuhi kebutuhan saat ini tanpa mengurangi kemampuan generasi mendatang memenuhi kebutuhannya.',
+                        'D' => 'Menggunakan sumber daya alam tanpa mempertimbangkan dampak lingkungan.',
                     ],
                     'benar' => 'C',
                 ],
                 [
-                    'pertanyaan' => 'Jika curah hujan meningkat dan sungai meluap, apa yang kemungkinan terjadi pada rawa lebak?',
+                    'pertanyaan' => 'Komponen lingkungan hidup yang termasuk komponen biotik adalah ...',
                     'jawaban' => [
-                        'A' => 'Seluruh kawasan berubah menjadi daratan kering.',
-                        'B' => 'Kadar air langsung menjadi nol.',
-                        'C' => 'Genangan air pasti menghilang.',
-                        'D' => 'Luas dan kedalaman genangan dapat meningkat.',
-                    ],
-                    'benar' => 'D',
-                ],
-            ],
-
-            // LEVEL 4 - RAWA GAMBUT
-            'RG' => [
-                [
-                    'pertanyaan' => 'Bagaimana tanah gambut terbentuk?',
-                    'jawaban' => [
-                        'A' => 'Dari tumpukan batuan yang mengalami pembekuan.',
-                        'B' => 'Dari akumulasi sisa tumbuhan yang mengalami penguraian tidak sempurna dalam kondisi basah.',
-                        'C' => 'Dari pasir pantai yang mengering.',
-                        'D' => 'Dari endapan logam di dalam tanah.',
+                        'A' => 'Air, tanah, dan udara.',
+                        'B' => 'Tumbuhan, hewan, dan manusia.',
+                        'C' => 'Suhu, cahaya matahari, dan kelembapan.',
+                        'D' => 'Batuan, mineral, dan air.',
                     ],
                     'benar' => 'B',
                 ],
                 [
-                    'pertanyaan' => 'Mengapa rawa gambut memiliki kemampuan menyimpan karbon?',
+                    'pertanyaan' => 'Pembangunan berkelanjutan perlu memperhatikan keseimbangan antara ...',
                     'jawaban' => [
-                        'A' => 'Karena seluruh karbon berubah menjadi batu.',
-                        'B' => 'Karena gambut tidak mengandung bahan organik.',
-                        'C' => 'Karena akumulasi bahan organik menyimpan karbon dalam jumlah besar.',
-                        'D' => 'Karena gambut selalu berada di wilayah laut.',
-                    ],
-                    'benar' => 'C',
-                ],
-                [
-                    'pertanyaan' => 'Apa dampak pengeringan lahan gambut secara berlebihan?',
-                    'jawaban' => [
-                        'A' => 'Meningkatkan risiko kebakaran dan mengganggu keseimbangan air.',
-                        'B' => 'Meningkatkan kemampuan gambut menyimpan air tanpa batas.',
-                        'C' => 'Menghilangkan seluruh risiko kebakaran.',
-                        'D' => 'Membuat gambut tidak mengalami perubahan.',
+                        'A' => 'Kepentingan ekonomi, sosial, dan kelestarian lingkungan.',
+                        'B' => 'Pembangunan gedung dan perluasan jalan saja.',
+                        'C' => 'Pemanfaatan sumber daya alam dan peningkatan konsumsi saja.',
+                        'D' => 'Kegiatan industri tanpa pengendalian lingkungan.',
                     ],
                     'benar' => 'A',
                 ],
                 [
-                    'pertanyaan' => 'Mengapa kebakaran pada lahan gambut sulit dipadamkan?',
+                    'pertanyaan' => 'Apa salah satu fungsi AMDAL dalam kegiatan pembangunan?',
                     'jawaban' => [
-                        'A' => 'Karena gambut tidak dapat terbakar.',
-                        'B' => 'Karena api hanya berada di permukaan air.',
-                        'C' => 'Karena gambut seluruhnya tersusun dari batu.',
-                        'D' => 'Karena api dapat membakar lapisan bahan organik di bawah permukaan tanah.',
+                        'A' => 'Menentukan jumlah penduduk suatu wilayah.',
+                        'B' => 'Menggantikan seluruh peraturan tata ruang.',
+                        'C' => 'Menghilangkan kebutuhan pemantauan lingkungan.',
+                        'D' => 'Menjadi bahan pertimbangan dalam pengambilan keputusan terkait dampak lingkungan.',
                     ],
                     'benar' => 'D',
                 ],
                 [
-                    'pertanyaan' => 'Salah satu tindakan yang tepat untuk menjaga ekosistem rawa gambut adalah...',
+                    'pertanyaan' => 'Tindakan yang mencerminkan upaya konservasi lingkungan adalah ...',
                     'jawaban' => [
-                        'A' => 'Membuat saluran drainase sebanyak mungkin.',
-                        'B' => 'Menjaga kelembapan gambut dan mencegah pengeringan berlebihan.',
-                        'C' => 'Membakar vegetasi untuk membuka lahan.',
-                        'D' => 'Menghilangkan seluruh tumbuhan asli.',
-                    ],
-                    'benar' => 'B',
-                ],
-            ],
-
-            // LEVEL 5 - LAHAN MANGROVE
-            'MG' => [
-                [
-                    'pertanyaan' => 'Di wilayah seperti apa ekosistem mangrove umumnya tumbuh?',
-                    'jawaban' => [
-                        'A' => 'Padang pasir yang sangat kering.',
-                        'B' => 'Puncak gunung bersalju.',
-                        'C' => 'Wilayah pesisir yang dipengaruhi pasang surut.',
-                        'D' => 'Kawasan gurun tanpa sumber air.',
-                    ],
-                    'benar' => 'C',
-                ],
-                [
-                    'pertanyaan' => 'Apa fungsi akar tunjang pada beberapa jenis tumbuhan mangrove?',
-                    'jawaban' => [
-                        'A' => 'Membantu menopang tumbuhan pada substrat berlumpur.',
-                        'B' => 'Menghasilkan cahaya matahari.',
-                        'C' => 'Mengubah air laut menjadi batu.',
-                        'D' => 'Menghentikan seluruh proses pasang surut.',
-                    ],
-                    'benar' => 'A',
-                ],
-                [
-                    'pertanyaan' => 'Apa fungsi akar napas pada beberapa jenis mangrove?',
-                    'jawaban' => [
-                        'A' => 'Menghasilkan air hujan.',
-                        'B' => 'Menyerap seluruh garam dari laut.',
-                        'C' => 'Mengubah lumpur menjadi pasir.',
-                        'D' => 'Membantu pertukaran gas pada lingkungan tanah yang miskin oksigen.',
-                    ],
-                    'benar' => 'D',
-                ],
-                [
-                    'pertanyaan' => 'Mengapa kawasan mangrove disebut sebagai tempat asuhan bagi berbagai biota laut?',
-                    'jawaban' => [
-                        'A' => 'Karena tidak terdapat organisme lain di dalamnya.',
-                        'B' => 'Karena menyediakan tempat berlindung dan mencari makan bagi berbagai organisme muda.',
-                        'C' => 'Karena seluruh ikan hidup di akar mangrove sepanjang hidupnya.',
-                        'D' => 'Karena mangrove tidak memiliki hubungan dengan kehidupan laut.',
-                    ],
-                    'benar' => 'B',
-                ],
-                [
-                    'pertanyaan' => 'Apa tindakan yang tepat untuk menjaga kelestarian ekosistem mangrove?',
-                    'jawaban' => [
-                        'A' => 'Menebang seluruh pohon mangrove.',
-                        'B' => 'Mengubah kawasan mangrove menjadi permukiman tanpa perencanaan.',
-                        'C' => 'Melindungi kawasan mangrove dan melakukan rehabilitasi pada area yang rusak.',
-                        'D' => 'Membuang limbah ke kawasan pesisir.',
+                        'A' => 'Menebang hutan lindung tanpa perencanaan.',
+                        'B' => 'Membuang sampah ke sungai.',
+                        'C' => 'Melindungi kawasan alami dan memulihkan lingkungan yang mengalami kerusakan.',
+                        'D' => 'Mengambil sumber daya alam melebihi kemampuan pemulihannya.',
                     ],
                     'benar' => 'C',
                 ],
             ],
         ];
 
-        foreach ($quizData as $kodeLevel => $questions) {
+        DB::transaction(function () use ($quizData) {
+            foreach ($quizData as $kodeLevel => $questions) {
+                $level = Level::where('kode', $kodeLevel)->first();
 
-            $level = Level::where('kode', $kodeLevel)->first();
+                if (!$level) {
+                    $this->command->warn(
+                        "Level {$kodeLevel} tidak ditemukan. Dilewati."
+                    );
+                    continue;
+                }
 
-            if (!$level) {
-                $this->command->warn(
-                    "Level {$kodeLevel} tidak ditemukan. Dilewati."
-                );
-                continue;
-            }
-
-            foreach ($questions as $index => $data) {
-
-                $question = Question::updateOrCreate(
-                    [
-                        'level_id' => $level->id,
-                        'urutan' => $index + 1,
-                    ],
-                    [
-                        'pertanyaan' => $data['pertanyaan'],
-                    ]
-                );
-
-                foreach ($data['jawaban'] as $opsi => $teks) {
-
-                    QuestionOption::updateOrCreate(
+                foreach ($questions as $index => $data) {
+                    $question = Question::updateOrCreate(
                         [
-                            'question_id' => $question->id,
-                            'opsi' => $opsi,
+                            'level_id' => $level->id,
+                            'urutan' => $index + 1,
                         ],
                         [
-                            'teks_jawaban' => $teks,
-                            'is_correct' => ($opsi === $data['benar']),
+                            'pertanyaan' => $data['pertanyaan'],
                         ]
                     );
+
+                    foreach ($data['jawaban'] as $opsi => $teks) {
+                        QuestionOption::updateOrCreate(
+                            [
+                                'question_id' => $question->id,
+                                'opsi' => $opsi,
+                            ],
+                            [
+                                'teks_jawaban' => $teks,
+                                'is_correct' => ($opsi === $data['benar']),
+                            ]
+                        );
+                    }
                 }
+
+                $this->command->info(
+                    "5 soal Level {$kodeLevel} berhasil diproses."
+                );
             }
+        });
 
-            $this->command->info(
-                "Soal Level {$kodeLevel} berhasil diproses."
-            );
-        }
-
-        $this->command->info('Seeder kuis Level 1–5 selesai.');
+        $this->command->info('Seeder kuis Geografi Level 1–5 selesai.');
     }
 }

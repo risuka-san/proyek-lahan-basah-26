@@ -12,15 +12,15 @@
             ? round(($materialNumber / $totalMaterials) * 100)
             : 0;
 
-        $ecosystemIcons = [
-            'KL' => '🌾',
-            'PS' => '🌊',
-            'RL' => '🪷',
-            'RG' => '🌱',
-            'MG' => '🌳',
+        // Ilustrasi vektor flat 2D berdasarkan kelompok materi Geografi.
+        $levelIllustrations = [
+            'BIO' => '<svg viewBox="0 0 64 64" role="img" aria-label="Biosfer"><circle cx="32" cy="32" r="27" fill="#B8DDBB"/><path d="M12 25l12-9 9 5-3 12-13 4zM37 13l12 8 5 12-10 5-7-8zM23 43l10-7 12 5-3 11-13-1z" fill="#4F9665"/><path d="M32 5v54M5 32h54" stroke="#2E7D4F" stroke-width="1.5" opacity=".35"/></svg>',
+            'BMD' => '<svg viewBox="0 0 64 64" role="img" aria-label="Bioma"><path d="M32 5L14 34h10L16 47h32L40 34h10L32 5z" fill="#4F9665"/><path d="M32 43v15" stroke="#8B6345" stroke-width="5" stroke-linecap="round"/><circle cx="51" cy="12" r="6" fill="#FFD66B"/></svg>',
+            'FFI' => '<svg viewBox="0 0 64 64" role="img" aria-label="Flora dan fauna Indonesia"><path d="M29 57V25" stroke="#548B58" stroke-width="4" stroke-linecap="round"/><path d="M29 39C13 39 9 27 12 17c13-2 21 8 17 22z" fill="#83B77F"/><path d="M29 30C29 16 40 9 52 13c0 13-10 21-23 17z" fill="#4F9665"/><circle cx="45" cy="47" r="8" fill="#E6B66C"/><path d="M40 44l-4-7 9 3 8-3-4 9" fill="#B77D45"/></svg>',
+            'SDA' => '<svg viewBox="0 0 64 64" role="img" aria-label="Sumber daya alam"><path d="M5 48L23 17l12 20 10-15 14 26H5z" fill="#8BAF8B"/><path d="M23 17l7 12-7-2-5 4 5-14z" fill="#F5F0E3"/><path d="M7 54h50" stroke="#8B9B72" stroke-width="3" stroke-linecap="round"/></svg>',
+            'PL' => '<svg viewBox="0 0 64 64" role="img" aria-label="Pelestarian lingkungan"><path d="M31 57V25" stroke="#548B58" stroke-width="4" stroke-linecap="round"/><path d="M31 40C15 41 10 29 13 18c13-2 21 8 18 22z" fill="#83B77F"/><path d="M31 31C31 17 42 10 54 14c0 13-10 21-23 17z" fill="#4F9665"/><path d="M13 50l9 8 24-25" fill="none" stroke="#2E7D4F" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></svg>',
         ];
-
-        $ecosystemIcon = $ecosystemIcons[$level->kode] ?? '🌿';
+        $levelIllustration = $levelIllustrations[$level->kode] ?? $levelIllustrations['BIO'];
     @endphp
 
     <style>
@@ -71,6 +71,26 @@
             color: var(--forest);
         }
 
+        .material-breadcrumb .breadcrumb-separator {
+            display: inline-flex;
+            align-items: center;
+            color: #A0ADA1;
+        }
+
+        .material-breadcrumb .breadcrumb-separator svg {
+            width: 13px;
+            height: 13px;
+            display: block;
+        }
+
+        .sidebar-back svg,
+        .material-nav-btn svg {
+            width: 17px;
+            height: 17px;
+            flex: 0 0 auto;
+            display: block;
+        }
+
         /* MAIN LAYOUT */
 
         .material-layout {
@@ -114,6 +134,19 @@
             font-size: .68rem;
             font-weight: 800;
             letter-spacing: 1.3px;
+        }
+
+        .sidebar-level-illustration {
+            display: inline-flex;
+            width: 38px;
+            height: 38px;
+            vertical-align: middle;
+            margin-right: 5px;
+        }
+
+        .sidebar-level-illustration svg {
+            width: 100%;
+            height: 100%;
         }
 
         .sidebar-level-title {
@@ -231,12 +264,14 @@
         }
 
         .material-hero::after {
-            content: "✿";
+            content: "";
             position: absolute;
             right: 25px;
-            bottom: -60px;
-            color: rgba(255, 255, 255, .12);
-            font-size: 12rem;
+            bottom: -85px;
+            width: 210px;
+            height: 210px;
+            border: 2px dashed rgba(255, 255, 255, .13);
+            border-radius: 50%;
             pointer-events: none;
         }
 
@@ -288,7 +323,12 @@
             border: 1px solid rgba(255, 255, 255, .25);
             border-radius: 50%;
             background: rgba(255, 255, 255, .10);
-            font-size: 3rem;
+        }
+
+        .material-hero-icon svg {
+            width: 66px;
+            height: 66px;
+            display: block;
         }
 
         /* CONTENT */
@@ -410,7 +450,16 @@
 
         .fact-icon {
             flex-shrink: 0;
-            font-size: 4.5rem;
+            width: 76px;
+            height: 76px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .fact-icon svg {
+            width: 68px;
+            height: 68px;
         }
 
         /* BOTTOM NAVIGATION */
@@ -457,6 +506,10 @@
 
         .material-nav-btn.primary:hover {
             background: #F5D96C;
+        }
+
+        .material-nav-btn {
+            white-space: normal;
         }
 
         /* RESPONSIVE */
@@ -515,7 +568,13 @@
             }
 
             .fact-icon {
-                font-size: 3rem;
+                width: 54px;
+                height: 54px;
+            }
+
+            .fact-icon svg {
+                width: 50px;
+                height: 50px;
             }
         }
 
@@ -546,9 +605,17 @@
 
         <div class="material-breadcrumb">
             <a href="{{ route('dashboard') }}">Beranda</a>
-            <span>›</span>
+            <span class="breadcrumb-separator" aria-hidden="true">
+                <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M6 3L11 8L6 13" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </span>
             <span>Materi</span>
-            <span>›</span>
+            <span class="breadcrumb-separator" aria-hidden="true">
+                <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M6 3L11 8L6 13" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </span>
             <span>{{ $level->kode }}</span>
         </div>
 
@@ -560,7 +627,10 @@
             <aside class="material-sidebar">
 
                 <a href="{{ route('dashboard') }}" class="sidebar-back">
-                    ← Kembali ke Dashboard
+                    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M19 12H5M5 12L11 6M5 12L11 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    Kembali ke Dashboard
                 </a>
 
                 <span class="sidebar-caption">
@@ -568,7 +638,7 @@
                 </span>
 
                 <h2 class="sidebar-level-title">
-                    {{ $ecosystemIcon }}
+                    <span class="sidebar-level-illustration">{!! $levelIllustration !!}</span>
                     {{ $level->judul }}
                 </h2>
 
@@ -637,11 +707,14 @@
 
                     <span class="material-eyebrow">
                         {{ $level->kode }}
-                        • MATERI {{ $materialNumber }}
+                        <svg viewBox="0 0 8 8" width="8" height="8" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="4" cy="4" r="3" fill="#F0D77B"/>
+                        </svg>
+                        MATERI {{ $materialNumber }}
                     </span>
 
                     <div class="material-hero-icon">
-                        {{ $ecosystemIcon }}
+                        {!! $levelIllustration !!}
                     </div>
 
                     <h1>
@@ -705,7 +778,7 @@
                         <div>
 
                             <span class="fact-label">
-                                ✦ FAKTA MENARIK
+                                FAKTA MENARIK
                             </span>
 
                             @if($material->fakta_angka)
@@ -722,8 +795,13 @@
 
                         </div>
 
-                        <div class="fact-icon">
-                            🌱
+                        <div class="fact-icon" aria-hidden="true">
+                            <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="32" cy="32" r="28" fill="#B8DDBB"/>
+                                <path d="M32 53V28" stroke="#548B58" stroke-width="4" stroke-linecap="round"/>
+                                <path d="M32 38C18 39 13 28 16 18C28 16 36 25 32 38Z" fill="#83B77F"/>
+                                <path d="M32 30C32 17 43 11 53 15C53 27 44 34 32 30Z" fill="#4F9665"/>
+                            </svg>
                         </div>
 
                     </section>
@@ -741,7 +819,10 @@
                             'level_id' => $level->id,
                             'material_id' => $previousMaterial->id
                         ]) }}" class="material-nav-btn">
-                                        ← Materi Sebelumnya
+                                        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M19 12H5M5 12L11 6M5 12L11 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg>
+                                        Materi Sebelumnya
                                     </a>
 
                     @else
@@ -757,13 +838,19 @@
                             'level_id' => $level->id,
                             'material_id' => $nextMaterial->id
                         ]) }}" class="material-nav-btn primary">
-                                        Materi Selanjutnya →
+                                        Materi Selanjutnya
+                                        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M5 12H19M19 12L13 6M19 12L13 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg>
                                     </a>
 
                     @else
 
                         <a href="{{ route('peta.game') }}" class="material-nav-btn primary">
-                            Selesai & Uji Kemampuan →
+                            Selesai & Uji Kemampuan
+                            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M5 12H19M19 12L13 6M19 12L13 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
                         </a>
 
                     @endif
